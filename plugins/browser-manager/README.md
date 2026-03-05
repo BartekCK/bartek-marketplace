@@ -1,0 +1,57 @@
+# browser-manager
+
+Browser automation and inspection plugin for Claude Code, powered by the Chrome DevTools MCP. Navigate, interact, and inspect live Chrome browser sessions directly from your Claude conversations.
+
+## Features
+
+- Navigate to URLs and read page content
+- Click buttons, links, and interactive elements
+- Fill and submit forms
+- Scroll pages
+- Read console logs (errors, warnings, info)
+- Inspect network requests and responses
+- DOM inspection
+
+## Prerequisites
+
+- Chrome 144 or later
+- Node.js (for `npx`)
+- Remote debugging enabled in Chrome
+
+### Enable Remote Debugging
+
+1. Open Chrome
+2. Go to `chrome://inspect/#remote-debugging`
+3. Enable remote debugging
+
+Chrome will show a banner saying "Chrome is being controlled by automated test software" and ask for permission when a session connects.
+
+## Installation
+
+Copy the plugin to your Claude Code plugins directory or reference it in your plugin configuration.
+
+## Usage
+
+The `browser-agent` triggers automatically on natural language requests involving browser interaction:
+
+- "Check in browser if the login works"
+- "Are there console errors on the dashboard?"
+- "Open https://example.com in browser and tell me what's on the page"
+- "Fill in the registration form with test data"
+- "Check the network requests when I submit this form"
+- "Test this in the browser"
+
+## How It Works
+
+The plugin uses [chrome-devtools-mcp](https://www.npmjs.com/package/chrome-devtools-mcp) to connect Claude to your live Chrome session via the Chrome DevTools Protocol. This means Claude can interact with your already-authenticated browser — no separate login needed.
+
+## Troubleshooting
+
+**"No browser session found"**
+Ensure Chrome is open and remote debugging is enabled at `chrome://inspect/#remote-debugging`.
+
+**"Permission denied"**
+Click "Allow" when Chrome shows the remote debugging permission dialog.
+
+**MCP server not starting**
+Ensure `npx` is available: `npm install -g npx` or just make sure Node.js is installed.

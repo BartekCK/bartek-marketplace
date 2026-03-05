@@ -1,0 +1,10 @@
+{
+  "name": "browser-manager",
+  "version": "0.1.0",
+  "description": "Browser automation and inspection via Chrome DevTools MCP — navigate, click, fill forms, inspect network traffic and console logs",
+  "author": {
+    "name": "Bartłomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  },
+  "keywords": ["browser", "testing", "devtools", "automation", "network", "console", "chrome"]
+}

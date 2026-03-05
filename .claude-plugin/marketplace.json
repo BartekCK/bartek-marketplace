@@ -1,0 +1,30 @@
+{
+  "name": "websoftware-tools",
+  "owner": {
+    "name": "Bartłomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "browser-manager",
+      "source": "./plugins/browser-manager",
+      "description": "Browser automation and inspection via Chrome DevTools MCP — navigate, click, fill forms, inspect network traffic and console logs"
+    },
+    {
+      "name": "superpowers",
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers"
+      },
+      "description": "Skills and structured workflows for Claude Code — brainstorming, debugging, TDD, code review, and development productivity patterns"
+    },
+    {
+      "name": "serena",
+      "source": {
+        "source": "github",
+        "repo": "oraios/serena"
+      },
+      "description": "Semantic coding tools via MCP — symbol search, code navigation, file editing, and codebase exploration for Claude Code"
+    }
+  ]
+}
