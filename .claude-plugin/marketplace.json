@@ -16,14 +16,20 @@
         "source": "github",
         "repo": "obra/superpowers"
       },
-      "description": "Skills and structured workflows for Claude Code — brainstorming, debugging, TDD, code review, and development productivity patterns"
+      "description": "Skills and structured workflows for Claude Code — brainstorming, debugging, TDD, code review, and development productivity patterns",
+      "version": "4.3.1",
+      "author": {
+        "name": "Jesse Vincent",
+        "email": "jesse@fsck.com"
+      },
+      "homepage": "https://github.com/obra/superpowers",
+      "repository": "https://github.com/obra/superpowers",
+      "license": "MIT",
+      "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows"]
     },
     {
       "name": "my-serena",
-      "source": {
-        "source": "github",
-        "repo": "oraios/serena"
-      },
+      "source": "./plugins/my-serena",
       "description": "Semantic coding tools via MCP — symbol search, code navigation, file editing, and codebase exploration for Claude Code"
     },
     {
