@@ -36,6 +36,11 @@
       "name": "architecture-software",
       "source": "./plugins/architecture-software",
       "description": "Development session management — capture implementation summaries, record architectural decisions, update README, and sync CLAUDE.md after coding sessions"
+    },
+    {
+      "name": "brutal-critic",
+      "source": "./plugins/brutal-critic",
+      "description": "Uncompromising code quality evaluator — searches best practices online, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports"
     }
   ]
 }
