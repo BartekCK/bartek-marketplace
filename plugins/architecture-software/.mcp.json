@@ -1,0 +1,15 @@
+{
+  "dbhub": {
+    "command": "npx",
+    "args": [
+      "@bytebase/dbhub@latest",
+      "--transport",
+      "stdio",
+      "--dsn",
+      "${DATABASE_URL}"
+    ],
+    "env": {
+      "DATABASE_URL": "${DATABASE_URL}"
+    }
+  }
+}
