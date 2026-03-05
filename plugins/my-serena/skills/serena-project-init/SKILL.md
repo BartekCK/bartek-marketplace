@@ -1,6 +1,6 @@
 ---
 name: serena-project-init
-description: This skill should be used when the user asks to "register a Serena project", "init Serena", "set up Serena for this project", "activate Serena project", "add project to Serena", "configure Serena", or encounters errors like "No source files found" when activating a Serena project. Guides through the full Serena project registration and activation workflow.
+description: This skill should be used when the user asks to "register a Serena project", "init Serena", "set up Serena for this project", "add project to Serena", "configure Serena", or encounters errors like "No source files found" when registering a Serena project. Guides through the full Serena project registration and initial activation workflow.
 ---
 
 # Serena Project Initialization
@@ -93,7 +93,7 @@ uvx --from "git+https://github.com/oraios/serena" serena project create <path> -
 
 ### "No active project"
 
-The `activate_project` tool must be called before using any other Serena tools. The `execute_shell_command` tool also requires an active project.
+The `activate_project` tool must be called before using any other Serena tools. The `execute_shell_command` tool also requires an active project. For per-session activation of an already-registered project, use the `serena-project-activate` skill.
 
 ### Project Already Registered
 
