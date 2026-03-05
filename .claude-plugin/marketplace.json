@@ -11,7 +11,7 @@
       "description": "Browser automation and inspection via Chrome DevTools MCP — navigate, click, fill forms, inspect network traffic and console logs"
     },
     {
-      "name": "superpowers",
+      "name": "my-superpowers",
       "source": {
         "source": "github",
         "repo": "obra/superpowers"
@@ -19,7 +19,7 @@
       "description": "Skills and structured workflows for Claude Code — brainstorming, debugging, TDD, code review, and development productivity patterns"
     },
     {
-      "name": "serena",
+      "name": "my-serena",
       "source": {
         "source": "github",
         "repo": "oraios/serena"
