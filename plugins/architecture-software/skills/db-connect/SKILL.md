@@ -1,7 +1,7 @@
 ---
-name: Database Connection Setup
-description: This skill should be used when the user forgot to set DATABASE_URL before starting their Claude Code session, when the database agent cannot connect to the database, when dbhub MCP tools are unavailable, when the user says "database not connected", "can't reach the database", or asks to "connect to database mid-session", "set up database credentials", "configure database connection", or "fix database connection without restarting". Establishes a working database connection during an active session without restarting Claude Code.
-version: 1.0.0
+name: db-connect
+description: Establishes a database connection mid-session when DATABASE_URL was not set at startup. Used internally by the database-agent when dbhub MCP tools are unavailable. Triggers on "database not connected", "can't reach the database", "connect to database mid-session", "fix database connection without restarting".
+user-invocable: false
 ---
 
 # Database Connection Setup

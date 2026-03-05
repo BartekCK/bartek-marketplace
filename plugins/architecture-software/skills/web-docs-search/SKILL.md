@@ -1,6 +1,7 @@
 ---
 name: web-docs-search
-description: This skill should be used when searching the internet for documentation about a library, npm package, Python module, software tool, or external API. Applies when looking up method signatures, usage examples, changelogs, or when debugging errors caused by incorrect external API usage.
+description: Search strategies and source hierarchies for finding external library documentation on the internet. Used internally by the documentation-researcher-agent. Provides query patterns for npm, PyPI, crates.io, MDN, and GitHub.
+user-invocable: false
 ---
 
 # Web Documentation Search

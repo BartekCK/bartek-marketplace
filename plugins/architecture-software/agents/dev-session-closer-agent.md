@@ -52,7 +52,7 @@ Before writing anything, discover the project's context:
 1. Read `CLAUDE.md` if it exists — understand project purpose and current state
 2. Glob for `.claude-plugin/plugin.json` to determine if this is a plugin project — record the result for use in Task 4
 3. Read `README.md` if it exists — understand project description
-4. Glob for `session-log.md` or `*-session-*.md` to find existing session history
+4. Glob for `sessions/` directory and list existing session files to find session history and determine the next sequence number
 5. Run `git diff --stat HEAD` and `git log --oneline -10` to see recent changes (if git repo)
 6. Glob for key source files to understand project structure
 
@@ -68,36 +68,40 @@ Analyze the entire conversation context:
 - Technical debt identified or created
 - Open questions and unresolved issues
 
-Write to `session-log.md`:
-- If the file does NOT exist: create it with a project header and first dated section
-- If the file DOES exist: read it first, then append a new dated section (format: `## Session — YYYY-MM-DD`) without overwriting previous sessions
+Write to `sessions/NNN-short-description.md` where:
+- `NNN` is a zero-padded 3-digit sequence number (000, 001, 002, ...)
+- `short-description` is a kebab-case summary of the session's main focus (e.g., `plugin-quality-review`, `auth-system-refactor`)
+- If `sessions/` directory does NOT exist: create it and start at `000`
+- If `sessions/` directory DOES exist: read existing files to determine the next sequence number
 
-Session summary section structure:
-```
-## Session — YYYY-MM-DD
+Determine the short description from the session's primary activity — what was the main thing done? Use 2-4 words in kebab-case.
 
-### What Was Implemented
+Session document structure:
+```markdown
+# Session NNN — YYYY-MM-DD — Short Description
+
+## What Was Implemented
 [Bullet list of features, functions, components, or changes built]
 
-### Architectural Decisions
+## Architectural Decisions
 [Bullet list: decision made → rationale / tradeoff]
 
-### Problems Solved
+## Problems Solved
 [Bullet list: problem → solution/approach]
 
-### Patterns Established
+## Patterns Established
 [Code conventions, abstractions, or patterns introduced this session]
 
-### Technical Debt
+## Technical Debt
 [Any shortcuts taken, known issues, or things that need revisiting]
 
-### Test Coverage
+## Test Coverage
 [What was tested, what remains untested]
 
-### Next Steps
+## Next Steps
 [Concrete tasks for next session]
 
-### Open Questions
+## Open Questions
 [Unresolved design questions or unknowns to investigate]
 ```
 
@@ -159,7 +163,7 @@ Skip this task if no `.claude-plugin/plugin.json` was found.
 **Execution Order:**
 
 1. Run discovery (read CLAUDE.md, README.md, git log, glob project files)
-2. Write Task 1 (session log) — append new section or create file
+2. Write Task 1 (session document) — create new numbered file in `sessions/`
 3. Write Task 2 (README) — overwrite with current state
 4. Write Task 3 (CLAUDE.md) — update relevant sections only if file exists
 5. Run Task 4 (plugin sync) — if `.claude-plugin/plugin.json` exists
@@ -175,7 +179,7 @@ After all tasks complete, report:
 **Project**: [project name]
 
 **Files updated**:
-- session-log.md: [brief description of what was captured]
+- sessions/NNN-description.md: [brief description of what was captured]
 - README.md: [brief description of what changed]
 - CLAUDE.md: [sections updated, or "skipped — file not present"]
 - Plugin components: [audit summary from Task 4, or "skipped — not a plugin project"]
@@ -186,7 +190,7 @@ After all tasks complete, report:
 **Edge Cases:**
 
 - **No git repo**: Skip git log step; derive context entirely from conversation
-- **New project with no docs yet**: Create session-log.md and README.md from scratch; skip CLAUDE.md update
+- **New project with no docs yet**: Create `sessions/` directory with first session document and README.md from scratch; skip CLAUDE.md update
 - **Ambiguous decisions**: Capture in "Open Questions" rather than asserting as decided
 - **Large codebase**: Focus on files and areas discussed in this session, not a full audit
 - **Conflicting information**: Prefer what was decided later in the conversation over earlier statements

@@ -1,6 +1,7 @@
 ---
 name: session-plugin-sync
-description: Use when closing or wrapping up a development session on a Claude Code plugin project, when syncing plugin component files after implementation work, when asked to "sync the plugin", "update plugin components", or "check if plugin files are current".
+description: Audits and updates plugin component files (agents, skills, commands, .mcp.json, plugin.json) after implementation work. Used internally by the dev-session-closer-agent on plugin projects. Also triggers on "sync the plugin", "update plugin components", or "check if plugin files are current".
+disable-model-invocation: true
 ---
 
 # Session Plugin Sync
@@ -48,9 +49,9 @@ Build a complete inventory before proceeding. Record which categories have files
 
 Load two sources of session context before beginning any audit:
 
-**Source 1 — Session log entry just written**
+**Source 1 — Most recent session document**
 
-Read the most recent `## Session — YYYY-MM-DD` section from `session-log.md`. Extract:
+Glob for `sessions/*.md` and read the highest-numbered file (e.g., `sessions/003-feature-name.md`). If no `sessions/` directory exists, check for a legacy `session-log.md` file instead. Extract:
 - Features or components implemented this session
 - Files created, moved, or deleted
 - API, tool, or environment variable changes

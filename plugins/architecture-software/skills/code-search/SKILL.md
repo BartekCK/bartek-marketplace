@@ -1,6 +1,7 @@
 ---
 name: code-search
-description: This skill should be used when the user asks to "search the codebase", "find files", "grep for", "look for pattern", "search for references", "locate all usages", or mentions using "rg", "fd", or "fzf" for searching. Provides guidance on the Holy Trinity CLI stack (ripgrep, fd, fzf) plus supporting tools (bat, zoxide, yazi) for fast, modern codebase search workflows.
+description: Reference material for modern CLI search tools (ripgrep, fd, fzf) and their composition patterns. Loaded by the code-researcher-agent for advanced search pipelines. Also triggers when the user explicitly asks about rg, fd, or fzf usage patterns. Note -- for simple searches, use Claude Code's built-in Grep and Glob tools directly.
+user-invocable: false
 ---
 
 # Code Search

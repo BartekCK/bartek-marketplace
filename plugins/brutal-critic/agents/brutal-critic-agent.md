@@ -47,7 +47,7 @@ assistant: \"I'll use the brutal-critic agent to find every weakness in the cach
 The user explicitly wants destructive criticism of recently written code — perfect use case for the brutal-critic agent.
 </commentary>
 </example>"
-model: sonnet
+model: opus
 color: red
 ---
 
