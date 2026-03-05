@@ -4,15 +4,15 @@ Software development toolkit plugin for Claude Code. Provides four specialized a
 
 ## Agents
 
-### `dev-session-closer-agent`
+### `session-closer-agent`
 
-Closes out a development session by capturing what was built, syncing project documentation, and recording architectural decisions.
+Closes out a work session by capturing what was accomplished, syncing project documentation, and recording decisions.
 
 **When it triggers:**
 - "Close the session and save everything"
 - "Wrap up this session"
 - "End of session"
-- "Summarize what we implemented today"
+- "Summarize what we did today"
 
 **What it updates:**
 - `sessions/NNN-description.md` -- creates a numbered session document
@@ -70,7 +70,7 @@ Search strategies and source hierarchies for finding external documentation. Use
 
 ### `session-plugin-sync`
 
-Audit workflow for syncing plugin component files after implementation work. Used internally by the dev-session-closer-agent on plugin projects only.
+Audit workflow for syncing plugin component files after implementation work. Used internally by the session-closer-agent on plugin projects only.
 
 ## Prerequisites
 

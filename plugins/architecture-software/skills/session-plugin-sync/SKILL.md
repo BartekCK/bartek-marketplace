@@ -1,6 +1,6 @@
 ---
 name: session-plugin-sync
-description: Audits and updates plugin component files (agents, skills, commands, .mcp.json, plugin.json) after implementation work. Used internally by the dev-session-closer-agent on plugin projects. Also triggers on "sync the plugin", "update plugin components", or "check if plugin files are current".
+description: Audits and updates plugin component files (agents, skills, commands, .mcp.json, plugin.json) after implementation work. Used internally by the session-closer-agent on plugin projects. Also triggers on "sync the plugin", "update plugin components", or "check if plugin files are current".
 disable-model-invocation: true
 ---
 
@@ -125,7 +125,7 @@ After auditing all components, produce a structured table before executing any c
 ```
 | Component | File                                   | Verdict      | Reason                                           |
 |-----------|----------------------------------------|--------------|--------------------------------------------------|
-| Agent     | agents/dev-session-closer-agent.md     | CURRENT      | Description unchanged; no new tools added        |
+| Agent     | agents/session-closer-agent.md     | CURRENT      | Description unchanged; no new tools added        |
 | Skill     | skills/session-plugin-sync/SKILL.md    | CURRENT      | Created this session; content already current    |
 | Command   | commands/close-session.md              | UPDATE NEEDED| References path renamed in this session          |
 | MCP       | .mcp.json                              | REVIEW       | Env var renamed; new name not confirmed stable   |
