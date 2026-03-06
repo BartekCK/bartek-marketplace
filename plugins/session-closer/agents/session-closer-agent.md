@@ -72,7 +72,7 @@ Write to `sessions/NNN-short-description.md` where:
 - `NNN` is a zero-padded 3-digit sequence number (000, 001, 002, ...)
 - `short-description` is a kebab-case summary of the session's main focus (e.g., `plugin-quality-review`, `auth-system-refactor`, `research-synthesis`, `content-planning`)
 - If `sessions/` directory does NOT exist: create it and start at `000`
-- If `sessions/` directory DOES exist: read existing files to determine the next sequence number
+- If `sessions/` directory DOES exist: read existing files, find the highest existing sequence number, and use that number + 1
 
 Determine the short description from the session's primary activity — what was the main thing done? Use 2-4 words in kebab-case.
 
@@ -150,17 +150,15 @@ Read the current `CLAUDE.md`. Update only sections relevant to work done this se
 
 If CLAUDE.md does not exist, do not create it — only update if present.
 
-**Task 4 — Sync Plugin Components** _(plugin projects only)_
+**Task 4 — Sync AI Documentation**
 
-If `.claude-plugin/plugin.json` was found during discovery, apply the **session-plugin-sync skill** to audit and update plugin component files.
+Apply the **ai-knowledge-sync** skill to audit and update all AI/agent documentation files. The skill operates in 8 detailed steps; the key phases are:
 
-The skill will:
-1. Discover all agents, skills, commands, .mcp.json, and plugin.json
-2. Compare each against session changes (conversation context + git diff)
-3. Produce an audit table classifying each as CURRENT, UPDATE NEEDED, or REVIEW
-4. Apply targeted updates to flagged components
-
-Skip this task if no `.claude-plugin/plugin.json` was found.
+- Discover all AI-related documentation (agents, skills, commands, workflows, rules files, README, plugin manifests, MCP config)
+- Compare each against session changes (conversation context + git diff)
+- Check cross-file consistency (terminology, references, contradictions)
+- Produce an audit table classifying each as CURRENT, UPDATE NEEDED, or REVIEW
+- Apply targeted updates to flagged files and check for cascading staleness
 
 **Task 5 — Git Commit**
 
@@ -168,7 +166,7 @@ Commit the files created or modified by session-closing tasks. Use the **convent
 
 1. Run `git status` to see what files were modified by session-closing tasks (session document, README.md, CLAUDE.md, plugin components)
 2. If no session-closing files appear as modified or untracked, skip this task and report "skipped — nothing to commit"
-3. Compose a commit message following the conventional-commits skill, using the session commit pattern described there; if Task 4 ran, note "plugin sync applied" in the body
+3. Compose a commit message following the conventional-commits skill, using the session commit pattern described there; if Task 4 ran, note "AI knowledge sync applied" in the body
 4. Stage ONLY session-closing files using explicit paths — do NOT use `git add -A` or `git add .`
 5. Output the proposed commit message and file list clearly for user review
 6. Execute `git commit` via Bash — the user approves or denies via tool approval
@@ -179,7 +177,7 @@ Commit the files created or modified by session-closing tasks. Use the **convent
 2. Write Task 1 (session document) — create new numbered file in `sessions/`
 3. Write Task 2 (README) — update or create as appropriate
 4. Write Task 3 (CLAUDE.md) — update relevant sections only if file exists
-5. Run Task 4 (plugin sync) — if `.claude-plugin/plugin.json` exists
+5. Run Task 4 (AI knowledge sync) — audit and update all AI documentation files
 6. Run Task 5 (git commit) — stage and commit session-closing files
 
 **Completion Report:**

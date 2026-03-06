@@ -4,6 +4,6 @@ Development session closing — capture implementation summaries, record decisio
 
 ## Components
 
-- **session-closer-agent** — Autonomous agent that captures what was accomplished, decisions made, and problems solved during a session
-- **session-plugin-sync** — Skill for syncing plugin components and project documentation at session end
+- **session-closer-agent** — Autonomous agent that captures session accomplishments and decisions, syncs AI documentation, and commits session artifacts
+- **ai-knowledge-sync** — Audits and updates all AI/agent documentation files (agents, skills, workflows, rules, README) across multiple AI tools (Claude Code, Cursor, OpenCode, Antigravity, Gemini)
 - **conventional-commits** — Conventional Commits format guidance for git commit messages

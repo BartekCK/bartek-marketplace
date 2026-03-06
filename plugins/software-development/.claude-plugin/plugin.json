@@ -1,0 +1,9 @@
+{
+  "name": "software-development",
+  "version": "0.1.0",
+  "description": "Expert backend, frontend, and testing agents with TypeScript/Node.js specialization — SOLID principles, design patterns, React, Tailwind, strict typing, Vitest/Jest testing, and clean code practices",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}
