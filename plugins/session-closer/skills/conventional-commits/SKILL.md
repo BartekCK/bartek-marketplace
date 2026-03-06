@@ -1,7 +1,6 @@
 ---
 name: conventional-commits
-description: |
-  Conventional Commits format for git commit messages. This skill should be used when committing changes, writing commit messages, or when the user asks about commit message format, says "format my commit", "how do I write a commit message", "conventional commits", or "what commit type should I use". Also used by the session-closer-agent when committing session documentation.
+description: "Provides the Conventional Commits format specification for git commit messages, including type definitions, formatting rules, and examples. Triggers on committing changes, writing commit messages, 'format my commit', 'how do I write a commit message', 'conventional commits', or 'what commit type should I use'. Also used by the session-closer-agent when committing session documentation."
 user-invocable: true
 ---
 

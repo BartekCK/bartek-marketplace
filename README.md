@@ -4,14 +4,15 @@ A marketplace of Claude Code plugins for development tooling, research, and sess
 
 ## Current State
 
-The marketplace contains 8 plugins, all registered in the marketplace manifest, each with valid structure and metadata. Session 005 completed a full skill-level review across all 7 plugins with skills and fixed all critical issues from the prior validation audit. Remaining technical debt is minor: a functional bug in `db-connect`, a DRY violation in `docs-researcher`, and optional description rewrites.
+The marketplace contains 8 plugins, all registered in the marketplace manifest. Session 006 ran a full brutal-critic evaluation across all 8 plugins and applied fixes to bring them up to the 8/10 quality threshold. All major factual errors, DRY violations, deprecated tooling, and convention violations have been resolved. The remaining technical debt is minor (db-connect DSN persistence workaround).
 
 ## What Was Done This Session
 
-- Ran skill-reviewer agent on all 7 plugins, producing Needs Improvement / Pass ratings
-- Fixed all 3 critical issues from session 004 (marketplace registration, missing README, missing version)
-- Added `disable-model-invocation: true` to 12 agent-exclusive skills across 4 plugins
-- Corrected `brutal-evaluation` frontmatter (added `user-invocable: false` + `disable-model-invocation: true`)
+- Ran brutal-critic-agent on all 8 plugins; only 1/8 passed initially
+- Applied fixes across 23 files (141 insertions, 242 deletions) to resolve all findings
+- Removed false MongoDB references from database plugin, added MariaDB and SQL Server
+- Fixed Claude Code skill indexer bug workaround: converted block scalar descriptions to single-line strings
+- Eliminated DRY violations, added least-privilege tools arrays, fixed deprecated/incorrect tooling
 
 ## Plugins
 
@@ -52,6 +53,8 @@ sessions/
   002-plugin-split-and-cleanup.md
   003-conventional-commits-skill.md
   004-plugin-validation-audit.md
+  005-skill-review-audit-fixes.md
+  006-brutal-critic-marketplace-sweep.md
 ```
 
 ## Getting Started
@@ -62,8 +65,7 @@ sessions/
 
 ## Next Steps
 
-- Fix `db-connect` skill's `export DATABASE_URL` persistence bug
-- Refactor `docs-researcher` agent to delegate to skill content (DRY violation)
-- Resolve `parentPort!` non-null assertion contradiction in `performance-optimization`
+- Re-run brutal-critic-agent on all 8 plugins to verify they now pass 8/10
 - Add automated marketplace-wide validation or CI checks
 - Install and verify each plugin independently in a clean Claude Code session
+- Consider a marketplace-level quality gate that blocks sub-8/10 plugins

@@ -68,32 +68,18 @@ Identify:
 - **Ecosystem** (infer from context: JavaScript/TypeScript → npm, Python → PyPI, Rust → crates.io)
 - **Error message** (if this is an error-driven lookup — extract the exact error string and library name)
 
-If the library name is ambiguous, use `npm info <name>` via Bash to confirm it exists and get the homepage URL.
-
 ### Step 2 — Identify the Documentation Source
 
-Use this priority order:
+Invoke the `web-docs-search` skill for source hierarchy priorities, search query patterns, ecosystem-specific URL patterns, and fetching strategies. Follow the skill's guidance for identifying and retrieving documentation pages.
 
-1. **Official documentation site** — Search for `[library name] documentation` or `[library name] official docs` to find the canonical docs URL. Prefer versioned URLs when a version is mentioned.
-2. **npm package page** — `npmjs.com/package/[name]` for JavaScript packages. Check the README and the `homepage` field.
-3. **PyPI page + GitHub** — For Python packages.
-4. **GitHub repository** — Check `/docs`, `/wiki`, or `README.md`. Use raw GitHub URLs to fetch markdown directly.
-5. **MDN Web Docs** — For browser or Node.js built-in APIs (e.g., `fetch`, `Promise`, `Array.prototype.map`).
-
-For quick npm metadata:
-```bash
-npm info <package> homepage    # get the docs URL
-npm info <package> version     # latest stable version
-npm info <package> description # quick summary
-```
+If the library name is ambiguous:
+- **npm (JS/TS):** `npm info <name> homepage`
+- **PyPI (Python):** Search `site:pypi.org <name>`
+- **crates.io (Rust):** Search `site:docs.rs <name>`
 
 ### Step 3 — Fetch Documentation
 
-- Use WebSearch to find the precise documentation page for the method or topic.
-- Use WebFetch to retrieve the page content.
-- Prefer pages under `/api`, `/docs`, `/reference`, or `/guide` paths — not landing pages.
-- If the first URL doesn't contain the relevant section, try a more specific search (e.g., add the method name to the query).
-- For GitHub repositories, prefer raw markdown URLs (e.g., `raw.githubusercontent.com/...`) for clean content extraction.
+Use WebSearch to locate the precise documentation page, then WebFetch to retrieve its content. If the first URL lacks the relevant section, refine your search query.
 
 ### Step 4 — Extract Relevant Information
 

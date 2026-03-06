@@ -14,8 +14,8 @@ Browser automation and inspection plugin for Claude Code, powered by the Chrome 
 
 ## Prerequisites
 
-- Chrome 144 or later
-- Node.js (for `npx`)
+- Chrome 144 or later (currently in Beta — use Chrome Beta channel until M144 reaches stable)
+- Node.js v22 or later (for `npx`)
 - Remote debugging enabled in Chrome
 
 ### Enable Remote Debugging
@@ -54,4 +54,4 @@ Ensure Chrome is open and remote debugging is enabled at `chrome://inspect/#remo
 Click "Allow" when Chrome shows the remote debugging permission dialog.
 
 **MCP server not starting**
-Ensure `npx` is available: `npm install -g npx` or just make sure Node.js is installed.
+Ensure Node.js v22 or later is installed. `npx` is bundled with npm and does not need separate installation.

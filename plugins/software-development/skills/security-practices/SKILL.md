@@ -84,13 +84,13 @@ function isSafeUrl(url: string): boolean {
 
 ## CSRF Protection
 
-Use the `csrf-csrf` or `csurf` package. Send token in a header, validate on server.
+Use the `csrf-csrf` package. Send token in a header, validate on server.
 
 ```typescript
 import { doubleCsrf } from "csrf-csrf";
 
 const { doubleCsrfProtection, generateToken } = doubleCsrf({
-  getSecret: () => process.env.CSRF_SECRET!,
+  getSecret: () => env.CSRF_SECRET,
   cookieName: "__csrf",
   cookieOptions: { httpOnly: true, sameSite: "strict", secure: true },
 });
@@ -107,8 +107,8 @@ app.get("/api/csrf-token", (req, res) => res.json({ token: generateToken(req, re
 import jwt from "jsonwebtoken";
 
 function issueTokens(userId: string, res: Response) {
-  const accessToken = jwt.sign({ sub: userId }, process.env.JWT_SECRET!, { expiresIn: "15m" });
-  const refreshToken = jwt.sign({ sub: userId, type: "refresh" }, process.env.JWT_REFRESH_SECRET!, { expiresIn: "7d" });
+  const accessToken = jwt.sign({ sub: userId }, env.JWT_SECRET, { expiresIn: "15m" });
+  const refreshToken = jwt.sign({ sub: userId, type: "refresh" }, env.JWT_REFRESH_SECRET, { expiresIn: "7d" });
 
   res.cookie("access_token", accessToken, { httpOnly: true, secure: true, sameSite: "strict", maxAge: 15 * 60 * 1000 });
   res.cookie("refresh_token", refreshToken, { httpOnly: true, secure: true, sameSite: "strict", path: "/api/auth/refresh", maxAge: 7 * 24 * 60 * 60 * 1000 });
@@ -119,7 +119,7 @@ function authenticate(req: Request, _res: Response, next: NextFunction) {
   const token = req.cookies.access_token;
   if (!token) throw new AuthError();
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET!) as { sub: string };
+    const payload = jwt.verify(token, env.JWT_SECRET) as { sub: string };
     req.userId = payload.sub;
     next();
   } catch {

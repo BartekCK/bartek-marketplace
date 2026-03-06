@@ -163,13 +163,13 @@ After writing all files, self-review against this checklist:
 After all code changes are complete, always run the project linter:
 
 ```bash
-npx eslint . --ext .ts
+npm run lint
 ```
 
-If a lint script is defined in `package.json`, prefer that:
+If no lint script is defined in `package.json`, fall back to:
 
 ```bash
-npm run lint
+npx eslint .
 ```
 
 Fix any lint errors before reporting completion. Never leave linting as an open item — it must always be the final step.

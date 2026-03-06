@@ -92,7 +92,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 ## shadcn/ui
 
-**Install components:** `npx shadcn-ui@latest add button card dialog`
+**Install components:** `npx shadcn@latest add button card dialog`
 
 **cn() utility** — merges Tailwind classes with conflict resolution (uses `clsx` + `tailwind-merge`):
 

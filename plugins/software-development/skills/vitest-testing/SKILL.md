@@ -30,7 +30,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
 ```typescript
 const mockFn = vi.fn();
-const mockFnTyped = vi.fn<[string, number], boolean>();
+const mockFnTyped = vi.fn<(a: string, b: number) => boolean>();
 
 // Return values
 mockFn.mockReturnValue("value");

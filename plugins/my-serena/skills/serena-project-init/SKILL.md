@@ -1,6 +1,8 @@
 ---
 name: serena-project-init
-description: This skill should be used when the user asks to "register a Serena project", "init Serena", "set up Serena for this project", "add project to Serena", "configure Serena", or encounters errors like "No source files found" when registering a Serena project. Guides through the full Serena project registration and initial activation workflow.
+description: Guides through the full Serena project registration and initial activation workflow. Triggers on "register a Serena project", "init Serena", "set up Serena for this project", "add project to Serena", "configure Serena", or when encountering "No source files found" errors during project registration.
+user-invocable: false
+disable-model-invocation: true
 ---
 
 # Serena Project Initialization
@@ -54,12 +56,12 @@ This creates a `.serena/project.yml` configuration file in the project directory
 
 Add `.serena` to the project's `.gitignore` to prevent committing Serena's local configuration. If `.gitignore` does not exist, create it.
 
-```bash
-# Append .serena to .gitignore (create file if needed)
-echo ".serena" >> <project-path>/.gitignore
-```
+**Before appending, verify `.serena` is not already listed to avoid duplicates.**
 
-Verify `.serena` is not already listed before appending to avoid duplicates.
+```bash
+# Check if .serena is already in .gitignore
+grep -qxF ".serena" <project-path>/.gitignore 2>/dev/null || echo ".serena" >> <project-path>/.gitignore
+```
 
 ### Step 4: Activate the Project
 

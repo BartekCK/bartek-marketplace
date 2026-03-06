@@ -85,7 +85,7 @@ Follow the project's existing convention. If no convention exists, use:
 Every test MUST follow the Given / When / Then pattern using comments:
 
 ```typescript
-it("should return the user when found", () => {
+it("should return the user when found", async () => {
   // Given
   const userId = "user-123";
   const expectedUser = { id: userId, name: "John", email: "john@example.com" };

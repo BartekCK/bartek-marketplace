@@ -1,6 +1,6 @@
 ---
 name: git-search
-description: Reference material for git-based search tools and patterns — searching across branches, tracing code through history, blame, bisect, and pickaxe queries. Loaded by the code-researcher-agent for git history and cross-branch investigations.
+description: "Provides reference material for git-based search tools and patterns — cross-branch grep, pickaxe queries, blame, bisect, and history tracing. Use for git history and cross-branch investigations."
 user-invocable: false
 disable-model-invocation: true
 ---

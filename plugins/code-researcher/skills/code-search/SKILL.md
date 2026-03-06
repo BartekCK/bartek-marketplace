@@ -1,6 +1,6 @@
 ---
 name: code-search
-description: Reference material for modern CLI search tools (ripgrep, fd, fzf) and their composition patterns. Loaded by the code-researcher-agent for advanced search pipelines. Also triggers when the user explicitly asks about rg, fd, or fzf usage patterns. Note -- for simple searches, use Claude Code's built-in Grep and Glob tools directly.
+description: "Reference material for modern CLI search tools (ripgrep, fd, fzf) and their composition patterns. Loaded by the code-researcher-agent for advanced search pipelines. Also triggers when the user explicitly asks about rg, fd, or fzf usage patterns. Note -- for simple searches, use Claude Code's built-in Grep and Glob tools directly."
 user-invocable: false
 disable-model-invocation: true
 ---
@@ -75,7 +75,7 @@ rg -U "describe\(.*\{[\s\S]*?\}\)"
 | `-t TYPE` | Filter by built-in type alias |
 | `-g GLOB` | Filter by glob |
 | `-C N` | N lines of context |
-| `--hidden` | Include dotfiles |
+| `--hidden` | Include hidden (dot) files |
 | `-I` | Ignore `.gitignore` rules |
 | `-U` | Multiline mode |
 
@@ -219,25 +219,6 @@ bat --color=always file.ts | head -20     # force color when piping
 bat --highlight-line 42 file.ts           # highlight a specific line
 ```
 
-### `zoxide` — Smart `cd`
-
-`zoxide` learns frequently-visited directories and allows jumping to them with partial names. It replaces manual `cd` navigation for any directory visited more than once.
-
-```bash
-z claude-plugins      # jump to the most-visited dir matching "claude-plugins"
-z src comp            # multi-token: most-visited dir matching both tokens
-zi                    # interactive selection via fzf
-```
-
-### `yazi` — TUI File Manager
-
-`yazi` is an async Rust terminal file manager for visually navigating large directory trees, previewing files, and batch-selecting entries when scripted output is insufficient.
-
-```bash
-yazi                  # open in current directory
-yazi /path/to/dir     # open at a specific path
-```
-
 ---
 
 ## 4. Decision Tree
@@ -250,8 +231,6 @@ Apply this table to choose the right tool immediately:
 | Find files by name, extension, or path | `fd "name"` or `fd -e ext` |
 | Interactively select from search results | pipe into `fzf` |
 | View a file with syntax highlighting | `bat file` |
-| Jump to a frequently-used directory | `z name` |
-| Navigate a directory tree visually | `yazi` |
 | Find content AND interactively open result | `rg ... \| fzf --preview 'bat ...'` |
 | Live re-run search on every keystroke | `fzf --bind change:reload:rg ...` |
 | Find files AND execute action on each | `fd -x cmd {}` |

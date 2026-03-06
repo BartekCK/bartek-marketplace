@@ -105,7 +105,8 @@ if (isMainThread) {
   const result = await runWorker({ csv: largeData });
 } else {
   const parsed = heavyParse(workerData.csv);
-  parentPort!.postMessage(parsed);
+  if (!parentPort) throw new Error("No parent port");
+  parentPort.postMessage(parsed);
 }
 ```
 

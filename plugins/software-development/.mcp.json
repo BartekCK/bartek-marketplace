@@ -1,6 +1,6 @@
 {
   "shadcn-ui": {
     "command": "npx",
-    "args": ["-y", "shadcn-ui-mcp@latest"]
+    "args": ["-y", "shadcn@latest", "mcp"]
   }
 }

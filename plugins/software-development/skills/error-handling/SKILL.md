@@ -65,7 +65,7 @@ interface ErrorResponse {
 ```typescript
 function errorHandler(err: Error, req: Request, res: Response, _next: NextFunction): void {
   // Log with context — never swallow errors
-  console.error({ err, method: req.method, path: req.path, body: req.body });
+  console.error({ err, method: req.method, path: req.path });
 
   if (err instanceof AppError) {
     res.status(err.statusCode).json({

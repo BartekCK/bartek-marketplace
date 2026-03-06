@@ -1,6 +1,6 @@
 ---
 name: brutal-evaluation
-description: "Use this skill when performing code quality evaluations, architecture reviews, or technical assessments that require a structured rating framework. Defines the 1-10 rating scale, 8 evaluation categories with pass/fail criteria, the report template, and scoring rules including weakest-link overall scoring and CRITICAL issue caps."
+description: "Structured evaluation framework used by the brutal-critic agent. Defines the 1-10 rating scale with 8/10 minimum pass threshold, 8 evaluation categories (correctness, error handling, architecture, readability, security, performance, testing, API design) with pass/fail criteria, the report template, and scoring rules including weakest-link overall scoring and CRITICAL issue caps."
 user-invocable: false
 disable-model-invocation: true
 ---

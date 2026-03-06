@@ -1,10 +1,7 @@
 ---
 name: ai-knowledge-sync
 user-invocable: true
-description: |
-  Audits and updates all AI/agent documentation files to ensure consistency and accuracy after implementation work. Covers agent definitions, skills, workflows, rules files, README, and AI-specific config files across multiple AI coding tools (Claude Code, Cursor, OpenCode, Antigravity, Gemini, GitHub Copilot).
-
-  Use this skill when: "sync AI docs", "update agent files", "check if docs are current", "update rules files", "ensure docs consistency", "align AI instructions with code", or before finishing a development session / creating a final commit.
+description: "Audits and updates all AI/agent documentation files to ensure consistency and accuracy after implementation work. Covers agent definitions, skills, workflows, rules files, README, and AI-specific config files across multiple AI coding tools (Claude Code, Cursor, OpenCode, Antigravity, Gemini, GitHub Copilot). Triggers on 'sync AI docs', 'update agent files', 'check if docs are current', 'update rules files', 'ensure docs consistency', 'align AI instructions with code', or before finishing a development session. Also invoked by session-closer-agent as part of session-closing workflow."
 ---
 
 # AI Knowledge Sync

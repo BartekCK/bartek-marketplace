@@ -1,6 +1,8 @@
 ---
 name: serena-project-activate
-description: This skill should be used when the user encounters "No active project" errors from Serena, when the user asks to "activate Serena", "start Serena session", or "make Serena work", or when Serena tools are not responding at session start despite the project being already registered.
+description: Activates an already-registered Serena project for the current session. Triggers on "No active project" errors, "activate Serena", "start Serena session", "make Serena work", or when Serena tools are not responding at session start despite the project being already registered.
+user-invocable: false
+disable-model-invocation: true
 ---
 
 # Serena Project Activation

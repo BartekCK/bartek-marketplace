@@ -8,16 +8,16 @@ Reference for executing database queries and exploring schemas when dbhub MCP to
 
 ```bash
 # Test connection
-psql "$DATABASE_URL" -c "SELECT version();"
+psql "DSN" -c "SELECT version();"
 
 # List all tables
-psql "$DATABASE_URL" -c "\dt"
+psql "DSN" -c "\dt"
 
 # Run a single query
-psql "$DATABASE_URL" -c "SELECT * FROM table_name LIMIT 10;"
+psql "DSN" -c "SELECT * FROM table_name LIMIT 10;"
 
 # Multi-line query using heredoc
-psql "$DATABASE_URL" << 'EOF'
+psql "DSN" << 'EOF'
 SELECT column_name, data_type, is_nullable, column_default
 FROM information_schema.columns
 WHERE table_name = 'users'
@@ -25,13 +25,13 @@ ORDER BY ordinal_position;
 EOF
 
 # Tables with row counts
-psql "$DATABASE_URL" -c "
+psql "DSN" -c "
 SELECT schemaname, tablename, n_live_tup AS row_count
 FROM pg_stat_user_tables
 ORDER BY n_live_tup DESC;"
 
 # Foreign keys for a table
-psql "$DATABASE_URL" << 'EOF'
+psql "DSN" << 'EOF'
 SELECT
   kcu.column_name,
   ccu.table_name AS foreign_table,
@@ -46,7 +46,7 @@ WHERE tc.constraint_type = 'FOREIGN KEY'
 EOF
 
 # List indexes
-psql "$DATABASE_URL" -c "
+psql "DSN" -c "
 SELECT indexname, indexdef
 FROM pg_indexes
 WHERE tablename = 'target_table';"
@@ -59,8 +59,8 @@ WHERE tablename = 'target_table';"
 The `mysql` CLI does not accept DSN URL format. Parse the DSN components (`mysql://USER:PASSWORD@HOST:PORT/DBNAME`) and pass them as discrete flags:
 
 ```bash
-# DSN: mysql://alice:secret@localhost:3306/myapp
-mysql -h localhost -u alice -psecret myapp -e "SHOW TABLES;"
+# DSN: mysql://alice:PASSWORD@localhost:3306/myapp
+mysql -h localhost -u alice -pPASSWORD myapp -e "SHOW TABLES;"
 
 # Run a query
 mysql -h HOST -u USER -pPASSWORD DBNAME -e "SELECT * FROM table_name LIMIT 10;"
@@ -94,30 +94,29 @@ sqlite3 /path/to/db.sqlite "SELECT * FROM table_name LIMIT 10;"
 sqlite3 /path/to/db.sqlite "
 SELECT name FROM sqlite_master WHERE type='table';" | while read tbl; do
   echo -n "$tbl: "
-  sqlite3 /path/to/db.sqlite "SELECT COUNT(*) FROM $tbl;"
+  sqlite3 /path/to/db.sqlite "SELECT COUNT(*) FROM \"$tbl\";"
 done
 ```
 
 ---
 
-## MongoDB (mongosh)
+## SQL Server (sqlcmd)
 
 ```bash
-# List collections
-mongosh "$DATABASE_URL" --eval "db.getCollectionNames()"
+# Test connection
+sqlcmd -S HOST,PORT -U USER -P PASSWORD -d DBNAME -Q "SELECT 1;"
 
-# Sample one document
-mongosh "$DATABASE_URL" --eval "db.collection_name.findOne()"
+# List all tables
+sqlcmd -S HOST,PORT -U USER -P PASSWORD -d DBNAME -Q "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE';"
 
-# Count documents per collection
-mongosh "$DATABASE_URL" --eval "
-db.getCollectionNames().forEach(c => print(c + ': ' + db[c].countDocuments()))
-"
+# Run a query
+sqlcmd -S HOST,PORT -U USER -P PASSWORD -d DBNAME -Q "SELECT TOP 10 * FROM table_name;"
 
-# Query with filter
-mongosh "$DATABASE_URL" --eval "
-db.users.find({ created_at: { \$gte: new Date(Date.now() - 30*24*3600*1000) } }).limit(10).toArray()
-"
+# Describe a table
+sqlcmd -S HOST,PORT -U USER -P PASSWORD -d DBNAME -Q "SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'table_name';"
+
+# Tables with row counts
+sqlcmd -S HOST,PORT -U USER -P PASSWORD -d DBNAME -Q "SELECT t.NAME, p.rows FROM sys.tables t JOIN sys.partitions p ON t.object_id = p.object_id WHERE p.index_id < 2 ORDER BY p.rows DESC;"
 ```
 
 ---
