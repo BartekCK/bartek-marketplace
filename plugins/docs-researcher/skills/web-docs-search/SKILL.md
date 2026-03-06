@@ -2,6 +2,7 @@
 name: web-docs-search
 description: Search strategies and source hierarchies for finding external library documentation on the internet. Used internally by the documentation-researcher-agent. Provides query patterns for npm, PyPI, crates.io, MDN, and GitHub.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Web Documentation Search

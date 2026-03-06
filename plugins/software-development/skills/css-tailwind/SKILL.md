@@ -2,6 +2,7 @@
 name: css-tailwind
 description: Tailwind CSS conventions, Radix UI primitives, and shadcn/ui component patterns for modern React frontends. Loaded by frontend-software-developer-agent when styling components, implementing responsive design, or using shadcn/ui.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # CSS / Tailwind / shadcn Cheat Sheet

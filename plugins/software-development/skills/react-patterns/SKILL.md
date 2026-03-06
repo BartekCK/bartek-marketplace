@@ -2,6 +2,7 @@
 name: react-patterns
 description: React component patterns, hooks, and state management best practices for TypeScript. Loaded by frontend-software-developer-agent when building UI components, managing state, or structuring React applications.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # React Patterns Cheat Sheet

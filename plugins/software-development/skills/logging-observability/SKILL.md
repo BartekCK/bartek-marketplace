@@ -2,6 +2,7 @@
 name: logging-observability
 description: "Structured logging and observability patterns for TypeScript/Node.js backends. Loaded by backend-software-developer-agent when implementing logging, error tracking, or monitoring in server-side applications."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Logging & Observability — TypeScript Cheat Sheet

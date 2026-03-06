@@ -2,6 +2,7 @@
 name: jest-testing
 description: Jest testing patterns and conventions for TypeScript projects. This skill should be used when the project uses Jest as its test framework — detected via jest in package.json dependencies, jest.config.ts, jest.config.js, or a jest field in package.json. Loaded by the tester-agent when creating or modifying tests in a Jest project.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Jest Testing Conventions

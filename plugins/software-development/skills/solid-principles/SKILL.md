@@ -2,6 +2,7 @@
 name: solid-principles
 description: "SOLID principles reference for TypeScript/Node.js backend development. Loaded by backend-software-developer-agent when implementing business logic, designing services, or refactoring code for better maintainability."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # SOLID Principles — TypeScript Cheat Sheet

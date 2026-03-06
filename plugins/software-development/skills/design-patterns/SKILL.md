@@ -2,6 +2,7 @@
 name: design-patterns
 description: "Design patterns reference for TypeScript backend development — GoF patterns, DDD aggregates, and Clean Architecture layers. Loaded by backend-software-developer-agent when designing services, implementing complex business logic, or structuring application architecture."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Design Patterns — TypeScript Cheat Sheet

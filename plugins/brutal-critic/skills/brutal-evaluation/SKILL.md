@@ -1,6 +1,8 @@
 ---
 name: brutal-evaluation
 description: "Use this skill when performing code quality evaluations, architecture reviews, or technical assessments that require a structured rating framework. Defines the 1-10 rating scale, 8 evaluation categories with pass/fail criteria, the report template, and scoring rules including weakest-link overall scoring and CRITICAL issue caps."
+user-invocable: false
+disable-model-invocation: true
 ---
 
 # Brutal Evaluation Framework

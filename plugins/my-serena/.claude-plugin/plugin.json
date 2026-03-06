@@ -1,5 +1,6 @@
 {
   "name": "my-serena",
+  "version": "0.1.0",
   "description": "Semantic coding tools via MCP — symbol search, code navigation, file editing, and codebase exploration for Claude Code",
   "author": {
     "name": "Oraios"

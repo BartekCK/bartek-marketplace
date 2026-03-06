@@ -2,6 +2,7 @@
 name: database-patterns
 description: "Database access patterns for TypeScript/Node.js with Prisma, Drizzle, and Knex. Loaded by backend-software-developer-agent when implementing data access layers, writing queries, or designing database schemas."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Database Patterns — TypeScript Cheat Sheet

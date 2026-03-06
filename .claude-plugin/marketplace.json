@@ -39,6 +39,11 @@
       "name": "brutal-critic",
       "source": "./plugins/brutal-critic",
       "description": "Uncompromising code quality evaluator — searches best practices online, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports"
+    },
+    {
+      "name": "software-development",
+      "source": "./plugins/software-development",
+      "description": "Expert backend, frontend, and testing agents with TypeScript/Node.js specialization — SOLID principles, design patterns, React, Tailwind, strict typing, Vitest/Jest testing, and clean code practices"
     }
   ]
 }

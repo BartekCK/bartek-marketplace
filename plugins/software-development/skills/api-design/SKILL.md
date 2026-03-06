@@ -2,6 +2,7 @@
 name: api-design
 description: "REST API design conventions and best practices for TypeScript/Node.js. Loaded by backend-software-developer-agent when creating endpoints, designing request/response schemas, or structuring API routes."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # REST API Design — TypeScript Cheat Sheet

@@ -2,6 +2,7 @@
 name: code-search
 description: Reference material for modern CLI search tools (ripgrep, fd, fzf) and their composition patterns. Loaded by the code-researcher-agent for advanced search pipelines. Also triggers when the user explicitly asks about rg, fd, or fzf usage patterns. Note -- for simple searches, use Claude Code's built-in Grep and Glob tools directly.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Code Search
