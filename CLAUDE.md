@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Is
 
-A Claude Code plugin marketplace (`websoftware-tools`) containing 7 independent plugins. Each plugin provides agents, skills, and optional MCP server configs. The marketplace manifest is `.claude-plugin/marketplace.json`.
+A Claude Code plugin marketplace (`websoftware-tools`) containing 8 independent plugins. Each plugin provides agents, skills, and optional MCP server configs. The marketplace manifest is `.claude-plugin/marketplace.json`.
 
 ## Architecture
 
@@ -43,3 +43,9 @@ Run the `plugin-validator` agent on any plugin after changes. Run `brutal-critic
 - **Agents delegate to skills for format/convention guidance (DRY)** — agents reference skills by name rather than duplicating content inline (session 003)
 - **Project-specific convention types must be labeled** — custom types like `session` in conventional-commits are explicitly marked as non-standard (session 003)
 - **Commit messages follow Conventional Commits** — use the `conventional-commits` skill in `session-closer` plugin for format reference (session 003)
+
+## Known Issues / Technical Debt
+
+- `software-development` plugin is not registered in `marketplace.json` (session 004)
+- `my-serena` plugin is missing a `README.md` (session 004)
+- Multiple internal skills missing `user-invocable: false` and `disable-model-invocation: true` flags, especially in `software-development` (session 004)

@@ -4,15 +4,15 @@ A marketplace of Claude Code plugins for development tooling, research, and sess
 
 ## Current State
 
-The marketplace contains 7 plugins, each with a focused single-responsibility scope. The former monolithic `architecture-software` plugin has been split into 4 independent plugins (`session-closer`, `code-researcher`, `database`, `docs-researcher`). All plugins pass validation. The external `my-superpowers` plugin has been removed from the marketplace.
+The marketplace contains 8 plugins, each with a focused single-responsibility scope. A full validation audit (session 004) found all plugins structurally sound with no broken manifests. Three critical issues remain: `software-development` is not yet registered in `marketplace.json`, `my-serena` is missing a README, and `session-closer` has an uncommitted skill rename. Several plugins need minor metadata fixes (`user-invocable`, `disable-model-invocation` flags).
 
 ## What Was Done This Session
 
-- Created `conventional-commits` skill in the `session-closer` plugin for git commit message format guidance
-- Updated `session-closer-agent` to delegate commit format to the skill (DRY — no inline duplication)
-- Validated with skill-reviewer and brutal-critic; resolved all findings
-- Marked the `session` commit type as project-specific in the skill
-- Added legacy format note for backward compatibility with earlier sessions
+- Ran `plugin-validator` agent against all 8 marketplace plugins
+- Identified 3 critical issues and multiple minor warnings across the plugin set
+- Confirmed all plugin manifests are valid JSON with correct structure
+- Documented common pattern of missing `user-invocable`/`disable-model-invocation` metadata on internal skills
+- No code changes made — read-only validation audit
 
 ## Plugins
 
@@ -25,6 +25,7 @@ The marketplace contains 7 plugins, each with a focused single-responsibility sc
 | `database` | Database inspection and querying via dbhub MCP |
 | `docs-researcher` | External documentation lookup |
 | `brutal-critic` | Code quality evaluator with PASS/FAIL reports |
+| `software-development` | Frontend/backend development agents with best-practice skills |
 
 ## Architecture
 
@@ -45,11 +46,13 @@ plugins/
   docs-researcher/
   my-serena/
   session-closer/
+  software-development/
 sessions/
   000-plugin-quality-review.md
   001-session-closer-generalization.md
   002-plugin-split-and-cleanup.md
   003-conventional-commits-skill.md
+  004-plugin-validation-audit.md
 ```
 
 ## Getting Started
@@ -60,8 +63,7 @@ sessions/
 
 ## Next Steps
 
-- Use the conventional-commits skill in practice to validate end-to-end workflow
+- Fix 3 critical issues: register `software-development` in marketplace, add `my-serena` README, commit `session-closer` skill rename
+- Add missing `user-invocable: false` and `disable-model-invocation: true` flags to internal skills
+- Add automated marketplace-wide validation or CI checks
 - Install and verify each plugin independently in a clean Claude Code session
-- Test that `database` plugin correctly loads dbhub MCP in isolation
-- Add automated validation or CI checks
-- Consider shared convention skills for other plugins
