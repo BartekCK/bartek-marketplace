@@ -46,6 +46,6 @@ Run the `plugin-validator` agent on any plugin after changes. Run `brutal-critic
 
 ## Known Issues / Technical Debt
 
-- `software-development` plugin is not registered in `marketplace.json` (session 004)
-- `my-serena` plugin is missing a `README.md` (session 004)
-- Multiple internal skills missing `user-invocable: false` and `disable-model-invocation: true` flags, especially in `software-development` (session 004)
+- `database/db-connect`: `export DATABASE_URL` does not persist across Bash tool calls — functional bug in Step 4 (session 005)
+- `docs-researcher`: agent prompt duplicates skill content instead of delegating — DRY violation (session 005)
+- `performance-optimization`: contains `parentPort!` non-null assertion contradicting `typescript-strict-typing` rules (session 005)

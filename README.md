@@ -4,15 +4,14 @@ A marketplace of Claude Code plugins for development tooling, research, and sess
 
 ## Current State
 
-The marketplace contains 8 plugins, each with a focused single-responsibility scope. A full validation audit (session 004) found all plugins structurally sound with no broken manifests. Three critical issues remain: `software-development` is not yet registered in `marketplace.json`, `my-serena` is missing a README, and `session-closer` has an uncommitted skill rename. Several plugins need minor metadata fixes (`user-invocable`, `disable-model-invocation` flags).
+The marketplace contains 8 plugins, all registered in the marketplace manifest, each with valid structure and metadata. Session 005 completed a full skill-level review across all 7 plugins with skills and fixed all critical issues from the prior validation audit. Remaining technical debt is minor: a functional bug in `db-connect`, a DRY violation in `docs-researcher`, and optional description rewrites.
 
 ## What Was Done This Session
 
-- Ran `plugin-validator` agent against all 8 marketplace plugins
-- Identified 3 critical issues and multiple minor warnings across the plugin set
-- Confirmed all plugin manifests are valid JSON with correct structure
-- Documented common pattern of missing `user-invocable`/`disable-model-invocation` metadata on internal skills
-- No code changes made — read-only validation audit
+- Ran skill-reviewer agent on all 7 plugins, producing Needs Improvement / Pass ratings
+- Fixed all 3 critical issues from session 004 (marketplace registration, missing README, missing version)
+- Added `disable-model-invocation: true` to 12 agent-exclusive skills across 4 plugins
+- Corrected `brutal-evaluation` frontmatter (added `user-invocable: false` + `disable-model-invocation: true`)
 
 ## Plugins
 
@@ -63,7 +62,8 @@ sessions/
 
 ## Next Steps
 
-- Fix 3 critical issues: register `software-development` in marketplace, add `my-serena` README, commit `session-closer` skill rename
-- Add missing `user-invocable: false` and `disable-model-invocation: true` flags to internal skills
+- Fix `db-connect` skill's `export DATABASE_URL` persistence bug
+- Refactor `docs-researcher` agent to delegate to skill content (DRY violation)
+- Resolve `parentPort!` non-null assertion contradiction in `performance-optimization`
 - Add automated marketplace-wide validation or CI checks
 - Install and verify each plugin independently in a clean Claude Code session
