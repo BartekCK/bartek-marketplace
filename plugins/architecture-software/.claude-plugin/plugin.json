@@ -1,9 +1,0 @@
-{
-  "name": "architecture-software",
-  "version": "0.2.0",
-  "description": "Software development toolkit — session closing with documentation sync, codebase research and pattern discovery, database inspection and querying, and external documentation lookup",
-  "author": {
-    "name": "Bartlomiej Kotarski",
-    "email": "bkotarski1@gmail.com"
-  }
-}

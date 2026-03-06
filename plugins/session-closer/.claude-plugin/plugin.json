@@ -1,0 +1,9 @@
+{
+  "name": "session-closer",
+  "version": "0.1.0",
+  "description": "Development session closing — capture implementation summaries, record decisions, and sync project documentation when wrapping up work sessions",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "code-researcher",
+  "version": "0.1.0",
+  "description": "Codebase research and pattern discovery — investigate code patterns, locate references, find similar implementations, and provide placement guidance for new code",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

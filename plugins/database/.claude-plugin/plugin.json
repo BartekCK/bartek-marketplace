@@ -1,0 +1,9 @@
+{
+  "name": "database",
+  "version": "0.1.0",
+  "description": "Database inspection and querying via dbhub MCP — explore schemas, run SQL queries, write migrations, and connect to databases",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "docs-researcher",
+  "version": "0.1.0",
+  "description": "External documentation lookup — find and present official docs for libraries, packages, tools, and APIs from the internet",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

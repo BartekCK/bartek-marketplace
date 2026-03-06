@@ -22,11 +22,11 @@ description: |
   </example>
 
   <example>
-  Context: Another agent encounters an unfamiliar API during code research.
-  assistant (code-researcher-agent): "I found a call to `useInfiniteQuery` from @tanstack/react-query but I'm unsure how the arguments are structured."
+  Context: During code research, an unfamiliar API is encountered.
+  assistant: "I found a call to `useInfiniteQuery` from @tanstack/react-query but I'm unsure how the arguments are structured."
   assistant: "I'll use the documentation-researcher agent to fetch the official docs for `useInfiniteQuery`."
   <commentary>
-  Another agent hit an unknown API -- delegate to the documentation-researcher agent for authoritative documentation lookup.
+  An unknown API was encountered during research -- delegate to the documentation-researcher agent for authoritative documentation lookup.
   </commentary>
   </example>
 

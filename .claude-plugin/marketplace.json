@@ -11,31 +11,29 @@
       "description": "Browser automation and inspection via Chrome DevTools MCP — navigate, click, fill forms, inspect network traffic and console logs"
     },
     {
-      "name": "my-superpowers",
-      "source": {
-        "source": "github",
-        "repo": "obra/superpowers"
-      },
-      "description": "Skills and structured workflows for Claude Code — brainstorming, debugging, TDD, code review, and development productivity patterns",
-      "version": "4.3.1",
-      "author": {
-        "name": "Jesse Vincent",
-        "email": "jesse@fsck.com"
-      },
-      "homepage": "https://github.com/obra/superpowers",
-      "repository": "https://github.com/obra/superpowers",
-      "license": "MIT",
-      "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows"]
-    },
-    {
       "name": "my-serena",
       "source": "./plugins/my-serena",
       "description": "Semantic coding tools via MCP — symbol search, code navigation, file editing, and codebase exploration for Claude Code"
     },
     {
-      "name": "architecture-software",
-      "source": "./plugins/architecture-software",
-      "description": "Development session management — capture implementation summaries, record architectural decisions, update README, and sync CLAUDE.md after coding sessions"
+      "name": "session-closer",
+      "source": "./plugins/session-closer",
+      "description": "Development session closing — capture implementation summaries, record decisions, and sync project documentation when wrapping up work sessions"
+    },
+    {
+      "name": "code-researcher",
+      "source": "./plugins/code-researcher",
+      "description": "Codebase research and pattern discovery — investigate code patterns, locate references, find similar implementations, and provide placement guidance for new code"
+    },
+    {
+      "name": "database",
+      "source": "./plugins/database",
+      "description": "Database inspection and querying via dbhub MCP — explore schemas, run SQL queries, write migrations, and connect to databases"
+    },
+    {
+      "name": "docs-researcher",
+      "source": "./plugins/docs-researcher",
+      "description": "External documentation lookup — find and present official docs for libraries, packages, tools, and APIs from the internet"
     },
     {
       "name": "brutal-critic",
