@@ -164,11 +164,11 @@ Skip this task if no `.claude-plugin/plugin.json` was found.
 
 **Task 5 — Git Commit**
 
-Commit the files created or modified by session-closing tasks:
+Commit the files created or modified by session-closing tasks. Use the **conventional-commits** skill for commit message format.
 
 1. Run `git status` to see what files were modified by session-closing tasks (session document, README.md, CLAUDE.md, plugin components)
 2. If no session-closing files appear as modified or untracked, skip this task and report "skipped — nothing to commit"
-3. Compose a commit message using format: `session: NNN — [short description]` with a body listing the updated files; if Task 4 ran, note "plugin sync applied" in the body
+3. Compose a commit message following the conventional-commits skill, using the session commit pattern described there; if Task 4 ran, note "plugin sync applied" in the body
 4. Stage ONLY session-closing files using explicit paths — do NOT use `git add -A` or `git add .`
 5. Output the proposed commit message and file list clearly for user review
 6. Execute `git commit` via Bash — the user approves or denies via tool approval

@@ -40,3 +40,6 @@ Run the `plugin-validator` agent on any plugin after changes. Run `brutal-critic
 - One concern per plugin — each plugin has a single focused purpose (decided in session 002, superseding session 000's bundle approach)
 - MCP configs belong exclusively in the plugin that uses them (e.g. dbhub only in `database` plugin)
 - Use `git mv` when reorganizing plugin files to preserve history
+- **Agents delegate to skills for format/convention guidance (DRY)** — agents reference skills by name rather than duplicating content inline (session 003)
+- **Project-specific convention types must be labeled** — custom types like `session` in conventional-commits are explicitly marked as non-standard (session 003)
+- **Commit messages follow Conventional Commits** — use the `conventional-commits` skill in `session-closer` plugin for format reference (session 003)

@@ -8,11 +8,11 @@ The marketplace contains 7 plugins, each with a focused single-responsibility sc
 
 ## What Was Done This Session
 
-- Split `architecture-software` into 4 independent plugins: `session-closer`, `code-researcher`, `database`, `docs-researcher`
-- Removed `my-superpowers` from the marketplace
-- Moved `.mcp.json` (dbhub) exclusively to the `database` plugin
-- Created `plugin.json` and `README.md` for each new plugin
-- Cleaned up stale installation and cache artifacts
+- Created `conventional-commits` skill in the `session-closer` plugin for git commit message format guidance
+- Updated `session-closer-agent` to delegate commit format to the skill (DRY — no inline duplication)
+- Validated with skill-reviewer and brutal-critic; resolved all findings
+- Marked the `session` commit type as project-specific in the skill
+- Added legacy format note for backward compatibility with earlier sessions
 
 ## Plugins
 
@@ -49,6 +49,7 @@ sessions/
   000-plugin-quality-review.md
   001-session-closer-generalization.md
   002-plugin-split-and-cleanup.md
+  003-conventional-commits-skill.md
 ```
 
 ## Getting Started
@@ -59,7 +60,8 @@ sessions/
 
 ## Next Steps
 
+- Use the conventional-commits skill in practice to validate end-to-end workflow
 - Install and verify each plugin independently in a clean Claude Code session
 - Test that `database` plugin correctly loads dbhub MCP in isolation
 - Add automated validation or CI checks
-- Create evaluation scenarios for each plugin
+- Consider shared convention skills for other plugins
