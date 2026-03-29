@@ -10,7 +10,7 @@ Senior Next.js architect that:
 
 1. **Checks docs first** — uses `next-devtools-mcp` to query documentation and live app state before making decisions
 2. **Designs the architecture** — plans file structure, component boundaries, data fetching, caching strategies
-3. **Delegates implementation** — splits work across `frontend-software-developer-agent` and `backend-software-developer-agent` via Agent tool
+3. **Delegates implementation** — splits work across `frontend-software-developer-agent`, `backend-software-developer-agent`, and `tester-agent` via Agent tool
 4. **Validates results** — offers post-implementation validation using MCP tools (errors, routes, metadata)
 
 **Model**: Opus (for thorough architectural analysis)
@@ -33,8 +33,8 @@ Connects to running Next.js 16+ dev servers via the built-in `/_next/mcp` endpoi
 
 ## Prerequisites
 
-- Next.js 16+ project with dev server running
-- `software-development` plugin installed (provides implementation agents)
+- Next.js 16+ project with dev server running. If using Next.js 15 or earlier, MCP runtime tools will be unavailable — the agent falls back to training knowledge only.
+- `software-development` plugin installed (provides implementation agents). Install from `plugins/software-development/` in this marketplace.
 
 ## Usage
 

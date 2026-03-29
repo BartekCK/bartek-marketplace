@@ -120,7 +120,7 @@ const UserCard = React.memo(({ user }: { user: User }) => (
 ));
 
 // useMemo — expensive computation
-const sorted = useMemo(() => items.sort((a, b) => a.price - b.price), [items]);
+const sorted = useMemo(() => [...items].sort((a, b) => a.price - b.price), [items]);
 
 // useCallback — stable function reference for child components
 const handleClick = useCallback((id: string) => { dispatch(selectItem(id)); }, [dispatch]);

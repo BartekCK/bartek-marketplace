@@ -19,7 +19,7 @@ Evaluates any non-code content. Auto-detects text type and loads the matching ev
 - **Technical writing** (RFCs, ADRs, READMEs, architecture docs, diagrams)
 - **General writing** (articles, blog posts, essays, general prose)
 - **Communication** (emails, Slack messages, proposals, cover letters)
-- **Thoughts/ideas** (arguments, reasoning, strategies, decisions)
+- **Thought/idea** (arguments, reasoning, strategies, decisions)
 
 Delivers a PASS/FAIL verdict plus an improved rewrite of weak sections.
 
@@ -35,10 +35,15 @@ Delivers a PASS/FAIL verdict plus an improved rewrite of weak sections.
 
 All skills share: 1-10 rating scale, 8/10 minimum pass, weakest-link scoring, CRITICAL caps at 5/10.
 
+Skills are loaded automatically by the agents — users never invoke them directly.
+
 ## Installation
 
+If installed as part of the `websoftware-tools` marketplace, the plugin is available automatically.
+
+To use standalone:
 ```bash
-claude plugin add /path/to/plugins/brutal-critic
+claude plugin add /absolute/path/to/bartek-marketplace/plugins/brutal-critic
 ```
 
 ## Usage

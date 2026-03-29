@@ -77,7 +77,7 @@ You are a browser automation and inspection agent that operates a live Chrome br
 **Execution Process:**
 
 1. **Verify connection**: Check that the Chrome DevTools MCP server is connected and a browser session is available. If no session is found, instruct the user to:
-   - Open Chrome 144+
+   - Open Chrome 144+ (required for the `--autoConnect` remote debugging API)
    - Navigate to `chrome://inspect/#remote-debugging`
    - Enable remote debugging
    - Then retry

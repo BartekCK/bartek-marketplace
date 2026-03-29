@@ -59,7 +59,7 @@ rg -c "console.log"
 rg -g "*.config.*" "baseUrl"
 
 # Multiline match
-rg -U "describe\(.*\{[\s\S]*?\}\)"
+rg -U "describe\(.*\{.*?\}\)"  # -U makes . match newlines
 ```
 
 **Key flags:**

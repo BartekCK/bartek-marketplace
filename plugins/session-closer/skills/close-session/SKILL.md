@@ -102,6 +102,8 @@ mobile. Connected all components to the existing API endpoints.
 
 ## Step 3: Smart Commit
 
+Use the `conventional-commits` skill for commit message format reference.
+
 ### No uncommitted changes
 
 If `git diff --stat` and `git diff --stat --cached` show nothing: offer to commit only the session document.

@@ -1,6 +1,6 @@
 ---
 name: serena-project-init
-description: Guides through the full Serena project registration and initial activation workflow. Triggers on "register a Serena project", "init Serena", "set up Serena for this project", "add project to Serena", "configure Serena", or when encountering "No source files found" errors during project registration.
+description: "Guides through the full Serena project registration and initial activation workflow. Triggers on 'register a Serena project', 'init Serena', 'set up Serena for this project', 'add project to Serena', 'configure Serena', or when encountering 'No source files found' errors during project registration."
 user-invocable: false
 disable-model-invocation: true
 ---

@@ -79,7 +79,7 @@ class CachedUserRepo implements UserRepository {
 }
 ```
 
-## Structural: Repository
+## Data Access: Repository
 
 **When:** Abstract data access behind a collection-like interface.
 

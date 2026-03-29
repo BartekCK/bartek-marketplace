@@ -7,15 +7,37 @@ disable-model-invocation: true
 
 # Next.js DevTools MCP Reference
 
-Reference guide for the `next-devtools-mcp` MCP server tools. These tools connect to a running Next.js 16+ development server via the built-in `/_next/mcp` endpoint.
+Reference guide for the `next-devtools-mcp` MCP server tools. The server has a two-layer architecture: **wrapper tools** that work independently of the dev server, and **runtime tools** that require a running Next.js 16+ development server via the built-in `/_next/mcp` endpoint.
 
 ## Prerequisites
 
-- Next.js 16+ project with dev server running (`npm run dev` / `pnpm dev`)
+- Next.js 16+ project with dev server running (`npm run dev` / `pnpm dev`) — required for runtime tools only
 - `next-devtools-mcp` configured in the project's `.mcp.json`
 - The MCP server auto-discovers running Next.js instances on localhost
 
-## Available Tools
+## Wrapper Tools
+
+These tools work independently of the dev server:
+
+### nextjs_docs
+Search and retrieve Next.js official documentation and best practices. This is the primary tool for the documentation-first principle — query it for current API details, patterns, and migration guidance.
+
+### nextjs_index
+Discover running Next.js dev servers and their available runtime tools. Use at the start of any session to confirm dev server availability.
+
+### browser_eval
+Automate and test web applications using Playwright. Use during validation phase to verify page rendering and test interactions.
+
+### nextjs_call
+Execute tools on specific Next.js dev server instances. Use when multiple dev servers are running and you need to target a specific one.
+
+### upgrade_nextjs_16
+Guided upgrade assistant for migrating to Next.js 16 with codemods.
+
+### enable_cache_components
+Setup and migration helper for Cache Components mode.
+
+## Runtime Tools
 
 ### get_errors
 
@@ -108,4 +130,4 @@ Look up Server Actions by their ID to find the source file and function name.
 - All tools require a running Next.js dev server. If the server is not running, tools return connection errors.
 - The MCP server auto-discovers Next.js instances on multiple ports — no manual port configuration needed.
 - Tool results reflect real-time application state. Re-query after making changes to get updated information.
-- The `next-devtools-mcp` server also exposes a Next.js knowledge base capability for documentation-backed answers — this is accessed internally by the tools, not as a separate callable tool. Prefer MCP tool results over training data for framework-specific details.
+- The `next-devtools-mcp` server exposes a `nextjs_docs` tool for querying the Next.js knowledge base directly. Prefer MCP tool results over training data for framework-specific details.

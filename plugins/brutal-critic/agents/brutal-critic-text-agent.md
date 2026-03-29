@@ -74,7 +74,7 @@ Read the text thoroughly. Then classify it into exactly one of these types:
 | **Communication** | `brutal-evaluation-communication` | Emails, Slack messages, proposals, cover letters, announcements, any message with a recipient |
 | **Thought/idea** | `brutal-evaluation-thought` | Arguments, reasoning, strategies, proposals for decisions, ideas being stress-tested, brainstorming output |
 
-If the classification is ambiguous, state which type was chosen and why before proceeding.
+If the classification is ambiguous, state which type was chosen and why before proceeding. When content fits multiple types, choose the type that best matches the user's evaluation goal. For example: a technical proposal emailed to stakeholders should be evaluated as Communication if the user asks 'is this professional?', but as Technical Writing if the user asks 'is this technically sound?'
 
 ## Step 2 — Load the Evaluation Framework
 

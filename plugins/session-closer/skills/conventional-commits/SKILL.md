@@ -23,7 +23,10 @@ Format: `<type>(<optional scope>): <description>`
 | `ci` | CI/CD configuration |
 | `chore` | Maintenance tasks, tooling |
 | `revert` | Reverting a previous commit |
-| `session` | **Deprecated.** Use `docs` instead. Retained for historical commit log context only. |
+
+> **Historical note:** Early commits in this project used a custom `session` type
+> (e.g., `session(003): decisions from auth design`). This is non-standard Conventional Commits.
+> Use `docs` for session documentation commits.
 
 ## Rules
 

@@ -136,7 +136,7 @@ git log -G "use(Effect|State)" --oneline
 git log -G "function\s+create\w+" -p
 
 # Combined with path restriction
-git log -G "TODO|FIXME|HACK" -- "*.ts" --oneline
+git log -G "TODO|FIXME|HACK" --oneline -- "*.ts"
 ```
 
 **`-S` vs `-G`:**

@@ -45,6 +45,10 @@ Key conventions:
 - Skills exclusively used by one agent use `disable-model-invocation: true`
 - Skills can have `references/` subdirectory for detailed docs loaded on demand
 
+> **Known bug (#12971):** Skill `description` fields must use single-line quoted strings.
+> Block scalar (`description: |`) breaks Claude Code's skill indexer. Agent descriptions
+> are not affected and should continue using block scalars with `<example>` blocks.
+
 ## CLAUDE.md Structure
 
 Typical sections:

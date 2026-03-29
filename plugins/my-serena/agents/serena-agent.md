@@ -78,3 +78,13 @@ When invoked, determine the current state and act accordingly:
 - Report clearly what state the project is in and what action is being taken
 - If activation fails, investigate the cause before suggesting re-registration
 - Only one project can be active at a time — inform the user if switching projects
+
+## MCP Tool Dependencies
+
+This agent relies on Serena MCP tools provided by the configured `.mcp.json` server:
+- `get_current_config` — check project activation status
+- `activate_project` — activate a registered project
+- `onboarding` — analyze project structure
+- `check_onboarding_performed` — verify onboarding status
+
+These tools are available through the MCP server, not the agent's `tools` array.

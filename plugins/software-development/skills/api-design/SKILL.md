@@ -69,7 +69,7 @@ interface UserResponse {
   id: string;
   email: string;
   name: string;
-  role: string;
+  role: "admin" | "member";
   createdAt: string;   // ISO 8601
 }
 ```

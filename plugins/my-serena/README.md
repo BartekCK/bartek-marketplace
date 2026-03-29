@@ -1,6 +1,6 @@
 # my-serena
 
-Semantic coding tools via MCP — symbol search, code navigation, file editing, and codebase exploration for Claude Code.
+Semantic coding tools via MCP (Model Context Protocol) — symbol search, code navigation, file editing, and codebase exploration for Claude Code.
 
 ## Components
 
@@ -10,7 +10,7 @@ Semantic coding tools via MCP — symbol search, code navigation, file editing, 
 
 ## Prerequisites
 
-- [Serena](https://github.com/oraios/serena) installed and accessible via `uvx`
+- [Serena](https://github.com/oraios/serena) installed and accessible via `uvx`. See [Serena installation guide](https://github.com/oraios/serena#quick-start)
 - A project with supported source files (Python, TypeScript, Java, etc.)
 
 ## MCP Server

@@ -52,10 +52,10 @@ Use the `web-docs-search` skill whenever performing web searches for documentati
 
 ## Core Responsibilities
 
-1. **Identify the subject** — Extract the package/library name, specific method or class (if mentioned), version (if specified), and ecosystem (npm/JavaScript, PyPI/Python, crates.io/Rust, etc.).
-2. **Find authoritative documentation** — Locate the primary documentation source using targeted web searches.
-3. **Fetch and extract** — Retrieve the relevant section from the documentation, not just a landing page.
-4. **Return actionable results** — Provide a clean, structured response with description, usage examples, parameters, and return values.
+1. **Identify** the subject (package, method, version, ecosystem)
+2. **Find** the authoritative documentation source
+3. **Fetch** the relevant section, not just a landing page
+4. **Return** a clean, structured response with actionable details
 
 ## Operational Steps
 

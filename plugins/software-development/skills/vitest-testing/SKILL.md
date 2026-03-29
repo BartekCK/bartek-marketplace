@@ -1,6 +1,6 @@
 ---
 name: vitest-testing
-description: Vitest testing patterns and conventions for TypeScript projects. This skill should be used when the project uses Vitest as its test framework — detected via vitest in package.json dependencies, vitest.config.ts, or vite.config.ts with test configuration. Loaded by the tester-agent when creating or modifying tests in a Vitest project.
+description: "Vitest testing patterns and conventions for TypeScript projects. This skill should be used when the project uses Vitest as its test framework — detected via vitest in package.json dependencies, vitest.config.ts, or vite.config.ts with test configuration. Loaded by the tester-agent when creating or modifying tests in a Vitest project."
 user-invocable: false
 disable-model-invocation: true
 ---

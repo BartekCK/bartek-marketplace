@@ -160,8 +160,8 @@ Jump to any known directory interactively.
 # Interactive directory selection (built into zoxide)
 zi
 
-# Manual: list all zoxide entries and pick one
-zoxide query --list | fzf | xargs -r zoxide add && cd "$(zoxide query --list | fzf)"
+# Manual alternative: select from zoxide database and cd
+cd "$(zoxide query --list | fzf)"
 ```
 
 ---

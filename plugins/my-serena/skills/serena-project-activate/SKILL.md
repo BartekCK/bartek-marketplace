@@ -1,6 +1,6 @@
 ---
 name: serena-project-activate
-description: Activates an already-registered Serena project for the current session. Triggers on "No active project" errors, "activate Serena", "start Serena session", "make Serena work", or when Serena tools are not responding at session start despite the project being already registered.
+description: "Activates an already-registered Serena project for the current session. Triggers on 'No active project' errors, 'activate Serena', 'start Serena session', 'make Serena work', or when Serena tools are not responding at session start despite the project being already registered."
 user-invocable: false
 disable-model-invocation: true
 ---
@@ -80,4 +80,4 @@ If the `.serena/project.yml` is corrupted or misconfigured, delete it and use th
 ## Cross-Reference
 
 - For initial project registration and setup, use the `serena-project-init` skill
-- For full project configuration options, consult the `serena-project-init` skill's `references/project-config.md`
+- For full project configuration options, see the project-config reference in the `serena-project-init` skill

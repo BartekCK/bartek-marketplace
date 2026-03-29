@@ -20,6 +20,8 @@ Check if `DATABASE_URL` is already set in the current shell:
 echo $DATABASE_URL
 ```
 
+> **Note:** This checks the inherited shell environment (set via `.zshrc`, `.bashrc`, or the process that launched Claude Code), NOT variables set in previous Bash tool calls (which don't persist across invocations).
+
 If non-empty, skip to Step 4.
 
 ---
@@ -49,7 +51,7 @@ Assemble DSN from found values:
 - PostgreSQL: `postgres://USER:PASSWORD@HOST:PORT/DBNAME?sslmode=disable`
 - MySQL/MariaDB: `mysql://USER:PASSWORD@HOST:PORT/DBNAME`
 - SQL Server: `sqlserver://USER:PASSWORD@HOST:PORT/DBNAME`
-- SQLite: the file path (e.g. `/path/to/db.sqlite`)
+- SQLite: `sqlite:///path/to/db.sqlite`
 
 ---
 

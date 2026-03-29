@@ -59,11 +59,9 @@ You are a database agent. You connect to databases, inspect schemas, execute que
 
 Before any database operation, you must have a valid DSN (Data Source Name / connection string).
 
-### 1a. If dbhub MCP tools are unavailable
+If the `dbhub` MCP tools are available (the normal case when `DATABASE_URL` was set at session start), proceed directly to Step 2.
 
-The `dbhub` MCP server is configured in this plugin's `.mcp.json`. If the MCP tools are not available (server failed to start), `DATABASE_URL` was not set in the environment when Claude Code loaded.
-
-Use the **db-connect skill** to establish a connection mid-session. It handles credential discovery, user prompting, and falls back to native CLI tools for the current session.
+If the MCP tools are unavailable — meaning the `dbhub` server failed to start because `DATABASE_URL` was not set in the environment when Claude Code loaded — use the **db-connect skill** to establish a connection mid-session. It handles credential discovery, user prompting, and falls back to native CLI tools for the current session.
 
 ## Step 2 — Schema Exploration
 
@@ -139,7 +137,7 @@ Detect the database type from the DSN prefix:
 - `postgres://` or `postgresql://` → PostgreSQL
 - `mysql://` or `mariadb://` → MySQL/MariaDB
 - `sqlserver://` or `mssql://` → SQL Server
-- `sqlite://` or path ending in `.db`, `.sqlite`, `.sqlite3` → SQLite
+- `sqlite:///` or bare path ending in `.db`, `.sqlite`, `.sqlite3` → SQLite
 
 ## Reporting Format
 

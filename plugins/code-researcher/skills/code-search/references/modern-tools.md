@@ -53,7 +53,7 @@ rg [OPTIONS] -f PATTERNFILE... [PATH...]
 | `-t TYPE` | `--type TYPE` | Restrict to file type alias |
 | `-T TYPE` | `--type-not TYPE` | Exclude file type alias |
 | `-g GLOB` | `--glob GLOB` | Include/exclude by glob (prefix `!` to exclude) |
-| `--hidden` | | Include hidden files and `.gitignore`-excluded |
+| `--hidden` | | Include hidden (dot) files |
 | `-I` | `--no-ignore` | Disable `.gitignore` and other ignore files |
 | `-u` | `--unrestricted` | Same as `--no-ignore --hidden` (repeat for binary) |
 | `-U` | `--multiline` | Allow `.` to match newlines |
