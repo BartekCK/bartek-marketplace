@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Is
 
-A Claude Code plugin marketplace (`websoftware-tools`) containing 8 independent plugins. Each plugin provides agents, skills, and optional MCP server configs. The marketplace manifest is `.claude-plugin/marketplace.json`.
+A Claude Code plugin marketplace (`websoftware-tools`) containing 9 independent plugins. Each plugin provides agents, skills, and optional MCP server configs. The marketplace manifest is `.claude-plugin/marketplace.json`.
 
 ## Architecture
 
@@ -17,7 +17,7 @@ plugins/<name>/
   README.md
   agents/<name>-agent.md       # Agent definition with YAML frontmatter + system prompt
   skills/<skill-name>/SKILL.md # Skill with frontmatter + optional references/ subdir
-  .mcp.json                    # Optional MCP server config (only browser-manager, database, my-serena have this)
+  .mcp.json                    # Optional MCP server config (browser-manager, database, my-serena, software-architect-nextjs, software-development)
 ```
 
 **Session history** — Session decisions are stored in auto memory at `memory/sessions/session_NNN_description.md`. Each file captures decisions + reasoning only. The `close-session` skill (in session-closer plugin) creates these.
@@ -52,4 +52,4 @@ Run the `plugin-validator` agent on any plugin after changes. Run `brutal-critic
 ## Known Issues / Technical Debt
 
 - `database/db-connect`: `export DATABASE_URL` does not persist across Bash tool calls — Step 4 now instructs embedding DSN directly in each command (session 005, workaround session 006)
-- Post-fix brutal-critic re-evaluation pending — all 8 plugins need re-run to confirm 8/10 pass (session 006)
+- Post-fix brutal-critic re-evaluation pending — all 9 plugins need re-run to confirm 8/10 pass (session 006)
