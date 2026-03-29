@@ -264,3 +264,4 @@ For AI-tool-specific file formats, locations, and conventions:
 - **`references/opencode.md`** — OpenCode configuration
 - **`references/antigravity.md`** — Antigravity project setup
 - **`references/gemini.md`** — Gemini CLI and Gemini Code Assist
+- **`references/memory.md`** — Auto memory file structure, MEMORY.md index, session memories

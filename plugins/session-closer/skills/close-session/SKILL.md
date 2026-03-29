@@ -1,6 +1,6 @@
 ---
 name: close-session
-description: "Saves session decisions and reasoning to auto memory. Analyzes git history and conversation to capture what was decided and why. Triggers on 'close session', 'save session', 'record session', 'end of session', 'wrap up session'. Can be invoked directly or delegated to by the session-closer-agent."
+description: "Saves session decisions and reasoning to auto memory. Analyzes git history and conversation to capture what was decided and why. Triggers on 'close session', 'save session', 'record session', 'end of session', 'wrap up session', 'log decisions', 'record what we decided', 'save what we learned'."
 user-invocable: true
 ---
 
@@ -53,6 +53,8 @@ Derive the short description (2-4 words, snake_case) from the session's main foc
 
 ## Step 4: Write Session Memory File
 
+All `memory/` paths below are relative to the project's Claude memory directory (`~/.claude/projects/<project>/memory/`).
+
 Create `memory/sessions/session_NNN_description.md` with this format:
 
 ```
@@ -79,7 +81,7 @@ type: project
 
 ## Step 5: Update MEMORY.md Index
 
-Add a one-liner to `MEMORY.md` under a Sessions section:
+Add a one-liner to `MEMORY.md` (in the same memory directory) under a Sessions section. If `MEMORY.md` does not exist, create it.
 
 ```
 - [Session NNN: Short Description](sessions/session_NNN_description.md) — one-line hook summarizing key decisions
@@ -91,5 +93,5 @@ If no Sessions section exists in `MEMORY.md`, create one.
 
 Ask: **"Want me to commit the session memory files?"**
 
-- If yes: stage only the memory files and commit using conventional-commits format with type `session` and session number as scope
+- If yes: stage only the memory files and commit using conventional-commits format, e.g., `session(003): capture auth architecture decisions`
 - If no: done — files are written but uncommitted
