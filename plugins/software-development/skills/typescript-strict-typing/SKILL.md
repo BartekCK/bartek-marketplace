@@ -2,6 +2,7 @@
 name: typescript-strict-typing
 description: Strict TypeScript typing patterns and anti-patterns for full-stack development. Loaded by both backend-software-developer-agent and frontend-software-developer-agent to enforce type safety and eliminate any/undefined usage.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Strict TypeScript Typing Cheat Sheet

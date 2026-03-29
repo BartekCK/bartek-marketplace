@@ -1,0 +1,9 @@
+{
+  "name": "software-architect-nextjs",
+  "version": "0.1.0",
+  "description": "Next.js architect agent — deep framework expertise with MCP-powered documentation access, delegates implementation to software-developer agents, and validates results",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

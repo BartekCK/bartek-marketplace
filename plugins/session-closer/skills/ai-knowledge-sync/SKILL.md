@@ -35,6 +35,7 @@ Scan the repository for all AI/agent-related documentation. Different AI tools u
 Glob for each pattern from the project root. Build a complete inventory before proceeding. Record which categories have files and which are empty. An empty category is not an error.
 
 For tool-specific file formats and locations, consult the references:
+
 - **`references/claude-code.md`** — Claude Code plugin structure (agents, skills, commands, plugin.json, .mcp.json)
 - **`references/cursor.md`** — Cursor rules and project configuration
 - **`references/opencode.md`** — OpenCode configuration files
@@ -51,12 +52,14 @@ Load two sources of context before beginning any audit:
 **Source 1 — Session memories**
 
 Check `~/.claude/projects/<project>/memory/sessions/` for session memory files. Read the most recent one (highest NNN). If no session memories exist, check for legacy `sessions/*.md` files in the project root as a fallback. Extract:
+
 - Decisions made and their reasoning
 - Any context about what was worked on
 
 **Source 2 — Git diff**
 
 Run `git diff --stat HEAD~1 HEAD` (or `git diff --stat HEAD` for unstaged changes). If `HEAD~1` fails (e.g., initial commit), fall back to `git diff --stat HEAD` only. If the session involved multiple commits, expand the range to cover all session commits. Extract:
+
 - Which files changed
 - Whether any documentation files themselves appear in the diff
 
@@ -176,12 +179,14 @@ Present this table to the user. Do not execute updates silently — the table is
 ## Step 6: Execute Targeted Updates
 
 For every `UPDATE NEEDED` item:
+
 1. Read the current file in full
 2. Identify the specific stale section
 3. Apply a minimal, targeted edit — update only the stale content
 4. Confirm the edit addresses the staleness reason from the audit table
 
 For every `REVIEW` item:
+
 1. Describe the ambiguity in plain language
 2. Present the current content alongside the proposed change
 3. Wait for the user to decide: apply, skip, or modify
@@ -258,6 +263,7 @@ When deciding between verdicts, apply this test:
 ## References
 
 For AI-tool-specific file formats, locations, and conventions:
+
 - **`references/claude-code.md`** — Claude Code plugins, agents, skills, commands, .mcp.json
 - **`references/cursor.md`** — Cursor rules (.cursorrules, .cursor/rules/*.mdc)
 - **`references/copilot.md`** — GitHub Copilot instructions

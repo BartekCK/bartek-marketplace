@@ -1,11 +1,11 @@
 ---
-name: brutal-evaluation
-description: "Structured evaluation framework used by the brutal-critic agent. Defines the 1-10 rating scale with 8/10 minimum pass threshold, 8 evaluation categories (correctness, error handling, architecture, readability, security, performance, testing, API design) with pass/fail criteria, the report template, and scoring rules including weakest-link overall scoring and CRITICAL issue caps."
+name: brutal-evaluation-code
+description: "Structured code evaluation framework used by the brutal-critic-code agent. Defines the 1-10 rating scale with 8/10 minimum pass threshold, 9 evaluation categories (correctness, error handling, architecture, readability, security, performance, testing, linting & formatting, API design) with pass/fail criteria, the report template, and scoring rules including weakest-link overall scoring and CRITICAL issue caps."
 user-invocable: false
 disable-model-invocation: true
 ---
 
-# Brutal Evaluation Framework
+# Brutal Code Evaluation Framework
 
 ## Rating Scale
 
@@ -54,14 +54,18 @@ disable-model-invocation: true
 **8+ requires:** Critical paths covered by tests. Tests are deterministic and fast. Test names describe behavior, not implementation. Edge cases tested. Mocks used appropriately (not excessively).
 **Below 8 signals:** No tests, flaky tests, tests that test implementation details, missing coverage of error paths, tests that always pass, snapshot tests without assertion context.
 
-### 8. API Design (when applicable)
+### 8. Linting & Formatting
+**8+ requires:** Consistent code style throughout. Formatting follows project/language conventions (indentation, line length, bracket placement). Import ordering is logical and consistent. No linter warnings or suppressions without justification. Naming conventions followed uniformly (camelCase, snake_case, etc. per language standard).
+**Below 8 signals:** Mixed indentation (tabs vs spaces), inconsistent naming conventions within the same file, unorganized imports, unjustified linter suppressions (eslint-disable, noqa), inconsistent bracket/brace style, trailing whitespace, missing newlines at end of file, inconsistent string quote style.
+
+### 9. API Design (when applicable)
 **8+ requires:** Consistent naming conventions. Predictable behavior across endpoints/methods. Clear input/output contracts. Versioning strategy in place. Errors returned in a consistent format.
 **Below 8 signals:** Inconsistent naming, surprising side effects, missing or inconsistent error formats, breaking changes without versioning, ambiguous parameter names.
 
 ## Report Template
 
 ```
-## Quality Evaluation Report
+## Code Quality Evaluation Report
 
 ### Scores
 
@@ -74,6 +78,7 @@ disable-model-invocation: true
 | Security | X/10 | PASS/FAIL |
 | Performance | X/10 | PASS/FAIL |
 | Testing | X/10 | PASS/FAIL |
+| Linting & Formatting | X/10 | PASS/FAIL |
 | API Design | X/10 | PASS/FAIL/N/A |
 | **Overall** | **X/10** | **PASS/FAIL** |
 

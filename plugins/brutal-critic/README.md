@@ -1,26 +1,39 @@
 # brutal-critic
 
-Uncompromising code quality evaluator for Claude Code. Searches best practices online, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports.
+Uncompromising quality evaluator for code and text. Auto-detects input type, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports with actionable improvements.
 
-## Components
+## Agents
 
-### Agent: brutal-critic-agent
+### brutal-critic-code-agent
 
-A rational, data-driven evaluator that:
-1. Reads all relevant code thoroughly
-2. Researches best practices online (2-3 authoritative sources)
-3. Evaluates across 8 categories (Correctness, Error Handling, Architecture, Readability, Security, Performance, Testing, API Design)
-4. Delivers a PASS/FAIL verdict with cited sources and required fixes
+Evaluates code quality. Reads code, researches best practices online (2-3 authoritative sources), and scores across 9 categories:
 
-No agent memory — every evaluation starts fresh to prevent accumulated bias.
+Correctness, Error Handling, Architecture & Design, Readability & Maintainability, Security, Performance, Testing, Linting & Formatting, API Design (when applicable)
 
-### Skill: brutal-evaluation
+Delivers a PASS/FAIL verdict with cited sources and required fixes.
 
-The evaluation framework defining:
-- **Rating scale**: 1-10 with explicit meaning for each score
-- **8 evaluation categories** with "8+ requires" and "below 8 signals" criteria
-- **Report template**: Scores table, issues by severity (CRITICAL/MAJOR/MINOR), references, positives, verdict
-- **Scoring rules**: Overall = weakest link, CRITICAL caps category at 5/10, when in doubt score lower
+### brutal-critic-text-agent
+
+Evaluates any non-code content. Auto-detects text type and loads the matching evaluation framework:
+
+- **Technical writing** (RFCs, ADRs, READMEs, architecture docs, diagrams)
+- **General writing** (articles, blog posts, essays, general prose)
+- **Communication** (emails, Slack messages, proposals, cover letters)
+- **Thoughts/ideas** (arguments, reasoning, strategies, decisions)
+
+Delivers a PASS/FAIL verdict plus an improved rewrite of weak sections.
+
+## Skills
+
+| Skill | Categories | Used By |
+|-------|-----------|---------|
+| `brutal-evaluation-code` | 9 categories | brutal-critic-code-agent |
+| `brutal-evaluation-technical-writing` | 7 categories | brutal-critic-text-agent |
+| `brutal-evaluation-writing` | 6 categories | brutal-critic-text-agent |
+| `brutal-evaluation-communication` | 6 categories | brutal-critic-text-agent |
+| `brutal-evaluation-thought` | 6 categories | brutal-critic-text-agent |
+
+All skills share: 1-10 rating scale, 8/10 minimum pass, weakest-link scoring, CRITICAL caps at 5/10.
 
 ## Installation
 
@@ -30,11 +43,21 @@ claude plugin add /path/to/plugins/brutal-critic
 
 ## Usage
 
-Trigger the agent by asking for code evaluation:
+### Code evaluation
 
 ```
 Review the authentication module in src/auth/
 Evaluate whether our error handling is production-ready
 Run a quality gate check on the payment service before we ship
-Be brutally honest — is this API design any good?
+```
+
+### Text evaluation
+
+```
+Review this ADR I wrote for the migration to microservices
+Is this email to the client professional enough?
+Tear apart this article I wrote about distributed systems
+Check if this text reads well in English
+Is my reasoning solid on switching to GraphQL?
+Evaluate these architecture diagrams for the payment system
 ```

@@ -2,6 +2,7 @@
 name: error-handling
 description: Error handling patterns for TypeScript applications — custom errors, Result types, React error boundaries, and API error responses. Loaded by both backend-software-developer-agent and frontend-software-developer-agent when implementing error handling strategies.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Error Handling Cheat Sheet

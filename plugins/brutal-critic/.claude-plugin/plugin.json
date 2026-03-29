@@ -1,7 +1,7 @@
 {
   "name": "brutal-critic",
   "version": "0.1.0",
-  "description": "Uncompromising code quality evaluator — searches best practices online, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports",
+  "description": "Uncompromising quality evaluator for code and text — auto-detects input type, evaluates against an 8/10 minimum standard, and produces structured PASS/FAIL reports with actionable improvements",
   "author": {
     "name": "Bartlomiej Kotarski",
     "email": "bkotarski1@gmail.com"

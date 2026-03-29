@@ -2,6 +2,7 @@
 name: security-practices
 description: Security best practices for TypeScript full-stack applications — input validation, authentication patterns, and common vulnerability prevention. Loaded by both backend-software-developer-agent and frontend-software-developer-agent when handling user input, authentication, or data sanitization.
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Security Practices Cheat Sheet

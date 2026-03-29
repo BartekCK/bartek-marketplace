@@ -2,6 +2,7 @@
 name: performance-optimization
 description: "Performance optimization patterns for both backend (Node.js) and frontend (React) TypeScript applications. Loaded by backend-software-developer-agent and frontend-software-developer-agent when optimizing application performance."
 user-invocable: false
+disable-model-invocation: true
 ---
 
 # Performance Optimization — TypeScript Cheat Sheet
