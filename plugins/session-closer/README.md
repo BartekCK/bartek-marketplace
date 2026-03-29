@@ -5,6 +5,6 @@ Session management — smart orchestrator that assesses work, recommends closing
 ## Components
 
 - **session-closer-agent** — Orchestrator that assesses session work (via git + conversation), recommends actions, presents a menu, and delegates to skills. Supports shortcuts like "just commit" or "sync docs".
-- **close-session** — Saves session decisions and reasoning to auto memory at `memory/sessions/`. User-invocable via `/close-session`.
+- **close-session** — Summarizes what changed during a session, writes a session document to `./docs/sessions/`, and handles smart committing. User-invocable via `/close-session`.
 - **ai-knowledge-sync** — Audits and updates all AI/agent documentation files (agents, skills, workflows, rules, README, memory) across multiple AI tools (Claude Code, Cursor, OpenCode, Antigravity, Gemini, Copilot).
 - **conventional-commits** — Conventional Commits format guidance for git commit messages.

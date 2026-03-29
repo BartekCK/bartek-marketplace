@@ -23,7 +23,7 @@ Format: `<type>(<optional scope>): <description>`
 | `ci` | CI/CD configuration |
 | `chore` | Maintenance tasks, tooling |
 | `revert` | Reverting a previous commit |
-| `session` | Session closing — summaries, doc sync *(project-specific, not part of official spec)* |
+| `session` | **Deprecated.** Use `docs` instead. Retained for historical commit log context only. |
 
 ## Rules
 
@@ -46,7 +46,7 @@ docs(readme): update installation instructions
 
 refactor(api): extract validation middleware
 
-session(002): plugin split and cleanup
+docs: add session 002 summary — plugin split and cleanup
 ```
 
 ## Multi-line Example
@@ -63,14 +63,10 @@ BREAKING CHANGE: DATABASE_URL now requires pool parameters
 
 ## Session Commits
 
-When committing session memory files or session-closing work:
-- Use type `session` with the session number as scope
+When committing session documents:
+- Use type `docs` — session files are project documentation
 - Description summarizes the session's main focus
-- Body lists what was saved
 
 ```
-session(007): auth system redesign decisions
-
-- memory/sessions/session_007_auth_redesign.md
-- MEMORY.md index updated
+docs: add session 007 summary — auth system redesign
 ```

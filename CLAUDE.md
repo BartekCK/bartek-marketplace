@@ -20,7 +20,7 @@ plugins/<name>/
   .mcp.json                    # Optional MCP server config (browser-manager, database, my-serena, software-architect-nextjs, software-development)
 ```
 
-**Session history** — Session decisions are stored in auto memory at `memory/sessions/session_NNN_description.md`. Each file captures decisions + reasoning only. The `close-session` skill (in session-closer plugin) creates these.
+**Session history** — Session summaries are stored in `docs/sessions/session_NNN_description.md`. Each file captures what changed and key decisions. The `close-session` skill (in session-closer plugin) creates these.
 
 ## Plugin Conventions
 

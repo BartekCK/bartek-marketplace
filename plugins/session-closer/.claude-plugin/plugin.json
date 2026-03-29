@@ -1,7 +1,7 @@
 {
   "name": "session-closer",
   "version": "0.1.0",
-  "description": "Session management — smart orchestrator that assesses work, recommends closing actions (save to memory, sync AI docs, commit), and lets the user choose what to do",
+  "description": "Session management — smart orchestrator that assesses work, recommends closing actions (session summary, sync AI docs, commit), and lets the user choose what to do",
   "author": {
     "name": "Bartlomiej Kotarski",
     "email": "bkotarski1@gmail.com"

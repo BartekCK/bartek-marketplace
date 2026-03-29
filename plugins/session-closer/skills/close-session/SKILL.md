@@ -1,12 +1,12 @@
 ---
 name: close-session
-description: "Saves session decisions and reasoning to auto memory. Analyzes git history and conversation to capture what was decided and why. Triggers on 'close session', 'save session', 'record session', 'end of session', 'wrap up session', 'log decisions', 'record what we decided', 'save what we learned'."
+description: "Summarizes what changed during a session, writes a session document, and handles smart committing. Triggers on 'close session', 'save session', 'end of session', 'wrap up session', 'summarize session', 'what did we do', 'session summary'."
 user-invocable: true
 ---
 
 # Close Session
 
-Save the key decisions and reasoning from this session to auto memory so future conversations have context.
+Analyze what changed during the session, write a session summary document to `./docs/sessions/`, and help commit properly.
 
 ## When Invoked Directly
 
@@ -14,84 +14,126 @@ Run all steps below.
 
 ## When Invoked by session-closer-agent
 
-Skip Steps 1-2 — the agent has already gathered session context and will provide it. Start at Step 3.
+Skip Step 1 — the agent has already gathered context and will provide it. Steps 2-3 still apply.
 
 ---
 
-## Step 1: Assess What Changed
+## Step 1: Analyze Changes
 
-Run these commands to understand the session:
+Gather context about what happened this session:
 
-1. `git log --oneline -15` — recent commits
-2. `git diff --stat HEAD` — unstaged changes
-3. `git diff --stat --cached` — staged changes
+1. `git diff --stat` — uncommitted changes
+2. `git diff --stat --cached` — staged changes
+3. Conversation context — what was discussed and worked on
 
-Build a picture of what was worked on.
+Combine into a session picture. The conversation context is the primary source — git fills in details.
 
-## Step 2: Ask the User
+If the user says "you already know" or similar, synthesize entirely from conversation context and git.
 
-Ask: **"What were the key decisions this session and why?"**
+---
 
-Listen for:
-- Architecture or design choices made
-- Approaches chosen over alternatives (and why)
-- Constraints discovered or trade-offs accepted
-- Conventions or patterns established
+## Step 2: Write Session Document
 
-If the user says "you already know" or similar, synthesize from git history and conversation context.
+### Determine session number
 
-## Step 3: Determine Session Number
+Scan `./docs/sessions/` for existing session files.
 
-Scan `~/.claude/projects/<project>/memory/sessions/` for existing session files.
-
-- If directory doesn't exist: start at `001`
+- If directory doesn't exist: create it and start at `001`
 - If directory exists: find the highest `NNN` in filenames, use `NNN + 1`
 
 Session files follow the pattern: `session_NNN_short_description.md`
 
 Derive the short description (2-4 words, snake_case) from the session's main focus.
 
-## Step 4: Write Session Memory File
+### Write the file
 
-All `memory/` paths below are relative to the project's Claude memory directory (`~/.claude/projects/<project>/memory/`).
+Create `./docs/sessions/session_NNN_description.md`:
 
-Create `memory/sessions/session_NNN_description.md` with this format:
+```markdown
+# Session NNN — YYYY-MM-DD — Short Title
 
-```
----
-name: Session NNN — Short Description
-description: <one-line summary of what was decided, specific enough to judge relevance>
-type: project
----
-
-# Session NNN — YYYY-MM-DD — Short Description
+## Summary
+Detailed implementation-level summary of what was done. Describes features
+added, bugs fixed, refactors applied — at the feature/change level, not
+file-level or commit-level. Multiple paragraphs if the session was substantial.
 
 ## Decisions
-
-- **[Decision 1]**: [What was chosen] — [Why this approach over alternatives]
-- **[Decision 2]**: [What was chosen] — [Why]
-- ...
+- **[Choice]**: [reasoning]
 ```
 
-**Content rules:**
-- Only decisions and reasoning — no change lists, no technical debt, no next steps
-- Each decision must include the "why" — a decision without reasoning is useless in future context
-- Be specific: "Chose PostgreSQL over SQLite because we need concurrent writes" not "Picked a database"
-- Omit trivial decisions that won't matter in future conversations
+### Content rules
 
-## Step 5: Update MEMORY.md Index
+- **Summary is required** — always describe what changed at the implementation level
+- **Decisions section is optional** — only include when non-obvious choices were made during the session
+- Be specific in the summary: "Implemented JWT auth with refresh token rotation and added login/register endpoints" not "Worked on authentication"
+- Decisions must include the "why": "Chose PostgreSQL over SQLite because we need concurrent writes" not "Picked PostgreSQL"
 
-Add a one-liner to `MEMORY.md` (in the same memory directory) under a Sessions section. If `MEMORY.md` does not exist, create it.
+### Example — implementation-heavy session
+
+```markdown
+# Session 003 — 2026-03-29 — Auth System Setup
+
+## Summary
+Implemented JWT-based authentication with refresh token rotation. Added
+login and register endpoints to the API. Set up middleware that validates
+tokens on protected routes and returns 401 with clear error messages.
+Integrated bcrypt for password hashing with configurable salt rounds.
+Updated the user model to include refresh token storage and expiration
+tracking.
+
+## Decisions
+- **JWT over session cookies**: API-first architecture, need stateless auth for mobile clients
+- **Refresh token rotation**: Single-use refresh tokens limit damage from token theft
+```
+
+### Example — pure implementation session (no decisions)
+
+```markdown
+# Session 004 — 2026-03-29 — Dashboard UI
+
+## Summary
+Built the main dashboard page with a stats grid showing active users,
+revenue, and error rate. Added a recent activity feed that live-updates
+via SSE. Implemented responsive layout that collapses the sidebar on
+mobile. Connected all components to the existing API endpoints.
+```
+
+---
+
+## Step 3: Smart Commit
+
+### No uncommitted changes
+
+If `git diff --stat` and `git diff --stat --cached` show nothing: offer to commit only the session document.
 
 ```
-- [Session NNN: Short Description](sessions/session_NNN_description.md) — one-line hook summarizing key decisions
+docs: add session NNN summary — <short description>
 ```
 
-If no Sessions section exists in `MEMORY.md`, create one.
+### Uncommitted changes exist
 
-## Step 6: Offer to Commit
+Analyze the diff to determine if changes span multiple concerns:
 
-Ask: **"Want me to commit the session memory files?"**
+**Single concern** — draft one conventional commit message:
 
-- If yes: stage only the memory files and commit using conventional-commits format, e.g., `session(003): capture auth architecture decisions`
-- If no: done — files are written but uncommitted
+1. Present the draft message for user approval
+2. Stage specific files (never `git add -A` or `git add .`)
+3. Commit after approval
+
+**Multiple concerns** — suggest splitting:
+
+1. Identify the distinct concerns (e.g., "This looks like a feature addition and a bug fix — want me to split them into separate commits?")
+2. If user agrees: draft a message for each commit, present all for approval, then commit sequentially — staging only the relevant files for each
+3. If user declines: draft a single commit message covering everything
+
+### Commit the session document
+
+**If committing with code changes:** Include the session file in the same commit. The commit message covers the code work; the session file is just another file in the changeset.
+
+**If committing separately** (user preference or no code changes):
+
+```
+docs: add session NNN summary — <short description>
+```
+
+Use `conventional-commits` skill for format reference. Stage only the session file. Commit after user approval.

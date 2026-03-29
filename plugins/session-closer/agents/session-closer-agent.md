@@ -32,10 +32,10 @@ description: |
 
   <example>
   Context: User made architecture decisions and wants them recorded.
-  user: "Save the decisions we made to memory"
-  assistant: "I'll use the session-closer-agent to capture session decisions in memory."
+  user: "Save what we did to a session doc"
+  assistant: "I'll use the session-closer-agent to write a session summary to docs/sessions/."
   <commentary>
-  Direct request for session memory. The agent gathers context and delegates to the close-session skill.
+  Direct request for session summary. The agent gathers context and delegates to the close-session skill.
   </commentary>
   </example>
 
@@ -56,7 +56,7 @@ Before doing anything, check if the user's message is a shortcut:
 
 - **"just commit"** / **"commit this"** → Skip to Commit Action directly
 - **"sync docs"** / **"sync AI docs"** / **"update docs"** → Skip to AI Docs Sync Action directly
-- **"close session"** / **"save session"** → Skip to Session Memory Action directly
+- **"close session"** / **"save session"** → Skip to Session Summary Action directly
 
 If a shortcut is detected, go directly to that action. Do not run assessment or show the menu.
 
@@ -77,7 +77,7 @@ Combine git analysis + user response into a session picture.
 Based on your assessment, determine which actions to recommend and why:
 
 **Recommendation logic:**
-- Architecture decisions or new patterns were discussed → recommend **Save session to memory**
+- Work was done this session that should be documented → recommend **Save session summary**
 - Multiple AI tool config files exist (CLAUDE.md, .cursorrules, GEMINI.md, etc.) or CLAUDE.md content is stale → recommend **Sync AI docs**
 - There are uncommitted changes → recommend **Commit changes**
 
@@ -85,7 +85,7 @@ Present the menu:
 
 ```
 Based on your session, I'd recommend:
-→ [1] Save session to memory — [specific reason]
+→ [1] Save session summary — [specific reason]
 → [2] Sync AI docs — [specific reason]
 → [3] Commit changes — [specific reason]
 
@@ -98,7 +98,7 @@ Only show actions you actually recommend. If only one makes sense, say so. If no
 
 Execute the user's chosen actions by delegating to skills:
 
-**Save session to memory** → Invoke the `close-session` skill. Pass along the session context you already gathered so the skill skips its own assessment.
+**Save session summary** → Invoke the `close-session` skill. Pass along the session context you already gathered so the skill skips its own analysis.
 
 **Sync AI docs** → Invoke the `ai-knowledge-sync` skill.
 

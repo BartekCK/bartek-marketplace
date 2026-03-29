@@ -38,6 +38,7 @@ For tool-specific file formats and locations, consult the references:
 
 - **`references/claude-code.md`** — Claude Code plugin structure (agents, skills, commands, plugin.json, .mcp.json)
 - **`references/cursor.md`** — Cursor rules and project configuration
+- **`references/copilot.md`** — GitHub Copilot instructions
 - **`references/opencode.md`** — OpenCode configuration files
 - **`references/antigravity.md`** — Antigravity project setup
 - **`references/gemini.md`** — Gemini instructions and configuration
@@ -51,10 +52,10 @@ Load two sources of context before beginning any audit:
 
 **Source 1 — Session memories**
 
-Check `~/.claude/projects/<project>/memory/sessions/` for session memory files. Read the most recent one (highest NNN). If no session memories exist, check for legacy `sessions/*.md` files in the project root as a fallback. Extract:
+Check `./docs/sessions/` for session documents. Read the most recent one (highest NNN). If no session docs exist, check `~/.claude/projects/*/memory/sessions/` (legacy auto memory location; glob for all projects, match by directory name) as a fallback. Extract:
 
+- What was implemented or changed
 - Decisions made and their reasoning
-- Any context about what was worked on
 
 **Source 2 — Git diff**
 
