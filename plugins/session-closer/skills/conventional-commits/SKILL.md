@@ -61,19 +61,16 @@ Refs: #142
 BREAKING CHANGE: DATABASE_URL now requires pool parameters
 ```
 
-## Session Commits (session-closer-agent only)
+## Session Commits
 
-Earlier sessions may use the legacy format `session: NNN — description`. The parenthesized scope format below is the current standard.
-
-When the session-closer-agent commits session documentation:
+When committing session memory files or session-closing work:
 - Use type `session` with the session number as scope
 - Description summarizes the session's main focus
-- Body lists files updated
+- Body lists what was saved
 
 ```
-session(003): auth system implementation
+session(007): auth system redesign decisions
 
-- sessions/003-auth-implementation.md
-- README.md updated
-- CLAUDE.md architecture decisions synced
+- memory/sessions/session_007_auth_redesign.md
+- MEMORY.md index updated
 ```
