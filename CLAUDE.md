@@ -20,7 +20,7 @@ plugins/<name>/
   .mcp.json                    # Optional MCP server config (only browser-manager, database, my-serena have this)
 ```
 
-**Session history** — `sessions/NNN-description.md` files are immutable records of development decisions. Never edit past sessions; create new ones that reference/supersede old decisions.
+**Session history** — Session decisions are stored in auto memory at `memory/sessions/session_NNN_description.md`. Each file captures decisions + reasoning only. The `close-session` skill (in session-closer plugin) creates these.
 
 ## Plugin Conventions
 
