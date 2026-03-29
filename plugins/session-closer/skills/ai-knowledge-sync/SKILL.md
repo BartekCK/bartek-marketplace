@@ -30,6 +30,7 @@ Scan the repository for all AI/agent-related documentation. Different AI tools u
 | Plugin manifests | `.claude-plugin/plugin.json` |
 | Commands | `commands/*.md` |
 | MCP config | `.mcp.json` |
+| Memory files | `~/.claude/projects/<project>/memory/MEMORY.md`, `memory/**/*.md` |
 
 Glob for each pattern from the project root. Build a complete inventory before proceeding. Record which categories have files and which are empty. An empty category is not an error.
 
@@ -39,6 +40,7 @@ For tool-specific file formats and locations, consult the references:
 - **`references/opencode.md`** — OpenCode configuration files
 - **`references/antigravity.md`** — Antigravity project setup
 - **`references/gemini.md`** — Gemini instructions and configuration
+- **`references/memory.md`** — Auto memory file structure, MEMORY.md index, session memories
 
 ---
 
@@ -46,14 +48,11 @@ For tool-specific file formats and locations, consult the references:
 
 Load two sources of context before beginning any audit:
 
-**Source 1 — Most recent session document**
+**Source 1 — Session memories**
 
-Glob for `sessions/*.md` and read the highest-numbered file. If no `sessions/` directory exists, check for a legacy `session-log.md` file instead. Extract:
-- Features or components implemented this session
-- Files created, moved, or deleted
-- API, tool, or environment variable changes
-- New agents, skills, or commands added
-- Any explicitly noted deprecations or removals
+Check `~/.claude/projects/<project>/memory/sessions/` for session memory files. Read the most recent one (highest NNN). If no session memories exist, check for legacy `sessions/*.md` files in the project root as a fallback. Extract:
+- Decisions made and their reasoning
+- Any context about what was worked on
 
 **Source 2 — Git diff**
 
@@ -91,6 +90,8 @@ For each skill file, evaluate:
 
 ### 3c. Rules / Instruction Files
 
+> **Ownership note:** CLAUDE.md updates are exclusively owned by this skill. Neither the session-closer-agent nor the close-session skill modify CLAUDE.md directly.
+
 These are the AI-tool-specific files (CLAUDE.md, .cursorrules, GEMINI.md, etc.). For each:
 
 1. **Terminology consistency** — Are the same concepts described using the same terms across all rules files? A feature called "session sync" in CLAUDE.md but "doc audit" in .cursorrules is confusing.
@@ -127,6 +128,15 @@ For each command file:
 1. **Capabilities described** — Does the README reflect current agent/AI capabilities?
 2. **Setup instructions** — Are any AI-tool-specific setup steps still accurate?
 3. **No TODOs left** — Check for leftover TODO markers in agent documentation sections.
+
+### 3i. Memory Files
+
+For each memory file, evaluate:
+
+1. **Index consistency** — Does every file in the memory directory have a corresponding entry in `MEMORY.md`? Does every entry point to an existing file?
+2. **Stale references** — Does any memory file reference code files, functions, or features that were renamed or removed this session?
+3. **Reversed decisions** — Does any session memory contain a decision that was explicitly reversed or superseded this session?
+4. **Description quality** — Is each memory file's `description` field specific enough to judge relevance in future conversations?
 
 ---
 
