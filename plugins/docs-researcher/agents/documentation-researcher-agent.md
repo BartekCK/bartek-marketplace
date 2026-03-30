@@ -39,6 +39,7 @@ description: |
   </commentary>
   </example>
 model: sonnet
+effort: medium
 color: blue
 tools: ["Read", "Glob", "Grep", "Bash", "Skill", "WebSearch", "WebFetch"]
 ---

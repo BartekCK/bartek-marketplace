@@ -48,7 +48,8 @@ description: |
   </commentary>
   </example>
 
-model: inherit
+model: sonnet
+effort: medium
 color: yellow
 ---
 
@@ -133,6 +134,52 @@ expect(result).toEqual({
   name: "John",
   createdAt: expect.any(Date),
   correlationId: expect.stringMatching(/^[a-f0-9-]{36}$/),
+});
+```
+
+### Test Data — Use Faker, Not Hardcoded Values
+
+NEVER hardcode test data like names, emails, or IDs. Use `@faker-js/faker` to generate realistic, random values. This prevents tests from passing accidentally due to coincidental value matches and makes test intent clearer — the specific value doesn't matter, the behavior does.
+
+```typescript
+// WRONG — hardcoded magic values obscure test intent
+it("should create a user", async () => {
+  // Given
+  const input = { name: "John", email: "john@example.com", age: 25 };
+
+  // When
+  const result = await userService.create(input);
+
+  // Then
+  expect(result).toEqual({
+    id: expect.any(String),
+    name: "John",
+    email: "john@example.com",
+    age: 25,
+  });
+});
+
+// CORRECT — faker makes it clear that specific values are irrelevant
+import { faker } from "@faker-js/faker";
+
+it("should create a user", async () => {
+  // Given
+  const input = {
+    name: faker.person.fullName(),
+    email: faker.internet.email(),
+    age: faker.number.int({ min: 18, max: 99 }),
+  };
+
+  // When
+  const result = await userService.create(input);
+
+  // Then
+  expect(result).toEqual({
+    id: expect.any(String),
+    name: input.name,
+    email: input.email,
+    age: input.age,
+  });
 });
 ```
 

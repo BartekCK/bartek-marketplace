@@ -48,7 +48,8 @@ description: |
   </commentary>
   </example>
 
-model: inherit
+model: sonnet
+effort: medium
 color: blue
 ---
 

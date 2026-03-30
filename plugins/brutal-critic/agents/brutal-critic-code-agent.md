@@ -49,6 +49,7 @@ description: |
   </commentary>
   </example>
 model: opus
+effort: high
 color: red
 tools: ["Read", "Glob", "Grep", "WebSearch", "WebFetch", "Skill"]
 ---

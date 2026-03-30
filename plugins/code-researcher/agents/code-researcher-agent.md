@@ -39,6 +39,7 @@ description: |
   </commentary>
   </example>
 model: sonnet
+effort: medium
 color: magenta
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash", "Skill"]
