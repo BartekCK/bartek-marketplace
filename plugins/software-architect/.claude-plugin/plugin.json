@@ -1,0 +1,9 @@
+{
+  "name": "software-architect",
+  "version": "0.1.0",
+  "description": "Framework-agnostic software architect agent — researches, plans, and validates before any code is written; delegates implementation to frontend/backend/tester agents and defers to software-architect-nextjs for Next.js projects",
+  "author": {
+    "name": "Bartlomiej Kotarski",
+    "email": "bkotarski1@gmail.com"
+  }
+}

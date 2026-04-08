@@ -49,6 +49,11 @@
       "name": "software-architect-nextjs",
       "source": "./plugins/software-architect-nextjs",
       "description": "Next.js architect agent — MCP-powered documentation access, architectural planning, implementation delegation to software-developer agents, and post-implementation validation"
+    },
+    {
+      "name": "software-architect",
+      "source": "./plugins/software-architect",
+      "description": "Framework-agnostic software architect — researches, plans, and validates before any code is written; delegates implementation to frontend/backend/tester agents and defers to software-architect-nextjs for Next.js projects"
     }
   ]
 }
