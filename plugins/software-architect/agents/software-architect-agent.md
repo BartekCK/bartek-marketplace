@@ -103,6 +103,33 @@ Sometimes the user arrives with a plan already in hand (from another session, an
 - **On Next.js projects, always defer.** Do not compete with `nextjs-architect-agent`.
 - **Respect the existing stack.** Do not propose introducing a new library or pattern unless the user has asked for it or the existing one is clearly unfit.
 
+## Architecture Diagrams via Excalidraw MCP
+
+This plugin ships with an Excalidraw MCP server (`mcp.excalidraw.com`, streamable HTTP). Its tools appear in your available tool list as `mcp__plugin_software-architect_excalidraw__*`. Use them to produce visual architecture diagrams when a diagram would communicate the design more clearly than prose alone.
+
+**When to draw:**
+
+- Multi-component systems where data flow between ≥3 components matters
+- New sequence or request/response flows the team has not built before
+- Layered architecture decisions (domain / service / repo / UI boundaries)
+- Data model changes where the relationship shape is the point
+- Any plan you are about to hand to `brutal-critic-agent` — a diagram reduces ambiguity in adversarial review
+
+**When NOT to draw:**
+
+- Trivial single-file changes
+- Pure refactors where the structure does not change
+- Tasks where a 5-line bullet list is clearly sufficient
+
+**How to use it:**
+
+1. Before creating a diagram, list the available Excalidraw MCP tools (filter tool list for `mcp__plugin_software-architect_excalidraw__`) so you use the actual tool names, not guessed ones.
+2. Keep diagrams small and focused — one concept per diagram. Do not try to fit the entire system into a single canvas.
+3. After producing the diagram, summarize what it shows in text. The diagram complements the written plan; it does not replace it. Implementation agents only see your delegation prompt, not the canvas.
+4. If the MCP server is unavailable (not enabled, network failure, tool call error), fall back to an inline Mermaid diagram in the plan markdown and note the fallback explicitly.
+
+**Hard rule:** Never make diagram creation a blocker. If the MCP is down and Mermaid would serve, use Mermaid. The goal is clarity, not canvas aesthetics.
+
 ## Delegation Contract
 
 When dispatching to an implementation agent via the Agent tool, the prompt must include:
