@@ -1,8 +1,9 @@
 ---
 name: architecture-planning
-description: "Rigid research → plan → validate → delegate methodology for framework-agnostic software architecture work. Loaded by software-architect-agent on every invocation to ensure no planning step is skipped before code is written."
-user-invocable: false
-disable-model-invocation: true
+description: "Rigid research → plan → validate → delegate methodology for framework-agnostic software architecture work. User-invoked only — run /architecture-planning (or tell the software-architect-agent to follow it) when you want a full architectural workup before any code is written. The software-architect-agent does NOT run this by default; it may offer to run it when the task looks architectural."
+user-invocable: true
+disable-model-invocation: false
+argument-hint: "[optional: feature or task description]"
 ---
 
 # Architecture Planning — Rigid Checklist

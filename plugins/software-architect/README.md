@@ -14,8 +14,8 @@ The architect is read-mostly: it does **not** write production code. It may writ
 
 ## Components
 
-- `agents/software-architect-agent.md` — the architect
-- `skills/architecture-planning/SKILL.md` — rigid research → plan → validate → delegate methodology
+- `agents/software-architect-agent.md` — the architect (produces lightweight plans by default)
+- `skills/architecture-planning/SKILL.md` — **user-invoked** rigid research → plan → validate → delegate methodology. Run via `/architecture-planning` or by telling the architect "follow the architecture-planning skill". The agent does NOT run it automatically; it will offer to run it when the task looks architectural.
 
 ## Dependencies
 
