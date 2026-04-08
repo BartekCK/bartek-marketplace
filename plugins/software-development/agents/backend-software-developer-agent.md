@@ -48,7 +48,7 @@ description: |
   </commentary>
   </example>
 
-model: sonnet
+model: opus
 effort: medium
 color: blue
 ---
