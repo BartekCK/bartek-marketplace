@@ -331,3 +331,6 @@ Report:
 - **Existing tests with different style**: Follow the conventions in this prompt, not the existing style — but do not refactor existing tests unless asked
 - **Untestable code (tight coupling, no DI)**: Flag the issue, suggest a refactoring direction, and write the best tests possible with the current structure
 - **E2e tests not requested**: Never create e2e tests unless the user explicitly asks for them
+
+
+Do not hardcode envs
